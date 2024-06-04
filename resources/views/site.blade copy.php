@@ -81,20 +81,20 @@
                         <li class="nav-item dropdown dropdown-on-hover">
                             <a class="nav-link dropdown-toggle text-white" href="{{ route('index') }}" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="paidads">
-                                {{-- Content Writing & Placement --}} Publisher Platform
+                                Content Writing & Placement
                             </a>
-                           {{--  <div class="dropdown-menu dropdown-caret dropdown-menu-card border-0 mt-0"
+                            <div class="dropdown-menu dropdown-caret dropdown-menu-card border-0 mt-0"
                                 aria-labelledby="paidads">
                                 <div class="bg-white dark__bg-1000 rounded py-2">
                                     <a class="dropdown-item link-600 fw-medium"
-                                        href="">Blog Posts Writing</a>
+                                        href="{{ route('all_publishers') }}">Blog Posts Writing</a>
                                     <a class="dropdown-item link-600 fw-medium"
-                                        href="">Article Writing</a>
+                                        href="{{ route('all_publishers') }}">Article Writing</a>
 
                                 </div>
-                            </div> --}}
+                            </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link text-white" href="{{-- {{ route('contacts.index') }} --}}" role="button">Contact Us</a>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('contacts.index') }}" role="button">Contact Us</a>
                         </li>
                         @auth
                         <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin') }}" role="button">
@@ -249,6 +249,89 @@
                     </div>
                 </div>
 
+                <div class="mb-2 card mt-1">
+                    <div class="card-body rounded" style="background-color: #d5e5fa">
+
+
+
+                        <embed src="{{ route('publisher_data') }}" class="" width="100%"
+                            height="690" />
+                    </div>
+                </div>
+
+
+                <h2 class="fs-2 fs-sm-4 fs-md-5 font-weight-bold text-facebook mt-7 mb-5 text-center">How Our Platform Works</h2>
+                <div class="row mb-3">
+                    <div class="col-sm-12 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="bg-facebook mr-2 icon-item shadow">
+                                        <strong class="fs-2 font-weight-bold m-3" style="color: yellow">1</strong>
+                                    </span>
+                                    <span class="flex-1">Buyer Registration and Account Setup</span>
+                                </div>
+                                <p class="card-text">
+                                    Prospective buyers start their journey on the PR guest posting marketplace by registering an account.
+                                    They can sign up using their email address or social media accounts like Facebook or Gmail. Once registered,
+                                    they receive a confirmation email and are ready to begin accessing thousands of quality sites for guest posting.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="bg-facebook mr-2 icon-item shadow">
+                                        <strong class="fs-2 font-weight-bold m-3" style="color: yellow">2</strong>
+                                    </span>
+                                    <span class="flex-1">Publisher Search and Task Assignment</span>
+                                </div>
+                                <p class="card-text">
+                                    Buyers navigate through the platform's inventory to search for suitable publishers to collaborate with.
+                                    They can utilize various filters to refine their search based on metrics like domain authority, domain rating, and organic traffic.
+                                    After identifying preferred publishers, buyers can send direct tasks to initiate collaboration.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="bg-facebook mr-2 icon-item shadow">
+                                        <strong class="fs-2 font-weight-bold m-3" style="color: yellow">3</strong>
+                                    </span>
+                                    <span class="flex-1">Task Creation and Submission</span>
+                                </div>
+                                <p class="card-text">
+                                    Buyers proceed to create tasks for the selected publishers, specifying their requirements and providing URLs for promotion.
+                                    They have the option to choose between Content Placement, Content Creation & Placement, and Link Insertions.
+                                    Tasks are submitted immediately for publisher review.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="bg-facebook mr-2 icon-item shadow">
+                                        <strong class="fs-2 font-weight-bold m-3" style="color: yellow">4</strong>
+                                    </span>
+                                    <span class="flex-1">Task Progress Monitoring and Communication</span>
+                                </div>
+                                <p class="card-text">
+                                    Buyers utilize the MY ORDERS section to track the progress of their tasks and communicate directly with publishers regarding any task-related queries.
+                                    Buyers can explore features like Open Offer to receive suggestions from publishers who are open to collaboration.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 </div>
 
 
@@ -259,7 +342,71 @@
 
 
 
-
+                <h2 class="fs-2 fs-sm-4 fs-md-5 font-weight-bold text-facebook mt-7 mb-5 text-center">Why Choose Us</h2>
+                 <div class="container">
+                <div class="row  mb-5">
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-img-top bg-soft-primary text-center">
+                                {{-- <img class="img-fluid text-center" src="/img/White-Label-Assurance.png" alt="Card image cap" width="300px" /> --}}
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="flex-1">Extensive Network Access</span>
+                                </div>
+                                <p class="card-text">
+                                    PR's guest posting marketplace provides access to a vast network of blogs and websites across numerous industries. This diverse selection allows users to target specific audiences effectively, maximizing the reach and impact of their content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-img-top bg-soft-primary text-center">
+                                {{-- <img class="img-fluid text-center" src="/img/Comprehensive-Research.png" alt="Card image cap" width="300px" /> --}}
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="flex-1">Quality Assurance Standards</span>
+                                </div>
+                                <p class="card-text">
+                                    PR maintains stringent editorial standards to ensure the quality of guest posts. Through thorough vetting processes and adherence to industry best practices, users can trust that their content will be published on reputable platforms, enhancing their brand credibility and authority.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-img-top bg-soft-primary text-center">
+                                {{-- <img class="img-fluid text-center" src="/img/Effective-Clustering.png" alt="Card image cap" width="300px" /> --}}
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="flex-1">Seamless Collaboration Tools</span>
+                                </div>
+                                <p class="card-text">
+                                    The platform offers intuitive collaboration tools that facilitate smooth communication between Advertisers (Buyers) and publishers. From negotiating terms to submitting content and tracking progress, PR streamlines the guest posting process, fostering efficient and productive partnerships.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="card border h-100 border-primary">
+                            <div class="card-img-top bg-soft-primary text-center">
+                                {{-- <img class="img-fluid text-center" src="/img/Cost-Effective-Solutions.png" alt="Card image cap" width="300px" /> --}}
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title text-center text-facebook font-weight-bold align-items-center d-flex">
+                                    <span class="flex-1">Cost-Effective Solutions</span>
+                                </div>
+                                <p class="card-text">
+                                    PR offers competitive pricing options, making guest posting accessible to businesses of all sizes. Whether operating on a limited budget or seeking to maximize ROI, users can find cost-effective solutions that align with their financial goals while still reaping the benefits of guest posting.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
 
             </div>
             <!-- end of .container-->
