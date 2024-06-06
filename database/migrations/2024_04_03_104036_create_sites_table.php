@@ -26,13 +26,18 @@ return new class extends Migration
             $table->string('site_language')->nullable();
             $table->integer('site_price')->nullable();
             $table->integer('site_price2')->nullable();
+            $table->integer('site_c_p_price')->nullable();
+            $table->integer('site_c_c_p_price')->nullable();
             $table->string('site_sposored')->nullable();
             $table->string('site_indexed')->nullable();
             $table->string('site_dofollow')->nullable();
+            $table->string('site_link_allow')->nullable();
             $table->string('site_time')->nullable();
             $table->string('site_region_location')->nullable();
             $table->string('spam_score')->nullable();
             $table->string('word_limite')->nullable();
+            $table->text('special_requirement')->nullable();
+            $table->enum('site_status',[1,0])->default(0);
             $table->timestamps();
         });
     }

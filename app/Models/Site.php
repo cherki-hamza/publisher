@@ -81,4 +81,23 @@ class Site extends Model
     }
 
 
+    // method for link insertion
+    public function link_insertion(){
+        if($this->site_link_allow == 0){
+            return 'Not Eligible';
+        }else{
+            $link = intval($this->site_link_allow) == 1 ? 'Link' : 'Links';
+
+            return "Eligible <span style='font-size:20px;' class='text-danger'> $this->site_link_allow </span>  $link to insert";
+        }
+    }
+
+    // method for site status
+    public function publisher_site_status(){
+
+      return  ($this->site_status == 0) ?  'Deactive' :  'Active';
+
+    }
+
+
 }

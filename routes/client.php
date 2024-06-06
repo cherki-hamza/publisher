@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
-    // show the form for client for the content Placement  OR content creation and Placement
+    /* // show the form for client for the content Placement  OR content creation and Placement
     Route::get("order_post_from_publisher/project/{project_id}/site/{site_id}", [OrderController::class,'order_index'])->name('order_index');
     // store for client the content Placement
     Route::post('orders/store_cp/project/{project_id}/site/{site_id}' , [OrderController::class,'store_cp'])->name('store_cp');
@@ -38,7 +38,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('task/{task_id?}/post/{post_id?}/user/{user_id?}/project/{project_id?}/handel_task',[TaskController::class,'handel_task'])->name('handel_task');
 
     // route for show the client invoices
-    Route::get('client/invoices' , [OrderController::class,'client_invoices'])->name('client_invoices');
+    Route::get('client/invoices' , [OrderController::class,'client_invoices'])->name('client_invoices'); */
 
     // ckeditor
    /*  Route::get('client/ck' , [HomeController::class,'ck'])->name('ck');

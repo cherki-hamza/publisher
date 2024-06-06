@@ -45,7 +45,7 @@
 
 
                     <hr>
-                    <h4 class="ml-3">Step 1. Add Your Website</h4>
+                    <h4 style="font-weight: 900;font-size: 22px;" class="ml-3 text-primary">Step 1. Add Your Website</h4>
 
 
                     <div class="card">
@@ -53,12 +53,12 @@
                         @include('pr.layouts.inc.alerts.alert')
                         <div class="card-body">
 
-                            <form action="{{route('submit_url') }}" method="POST">
+                            <form action="{{route('website_unique') }}" method="POST">
                                 @csrf
                                 <span class="font-weight-bold">URL</span>
                                 <div class="input-group">
                                     <input type="text" name="url" class="form-control" autocomplete="off"
-                                        placeholder="http(s)://www." value="">
+                                        placeholder="http(s)://www." value="https://">
 
                                     <div class="input-group-append">
                                         <button class="btn bg-primary text-white" type="submit">Confirm &amp;

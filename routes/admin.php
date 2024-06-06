@@ -50,16 +50,27 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('permission/reload', 'reloadPermission')->middleware(['permission:create permission'])->name('permission.reload');
     });
 
+
     // platform routes
-    Route::get('/platform' , [PlatformController::class,'index'])->name('platform_index');
+    Route::get('platform' , [PlatformController::class,'index'])->name('platform_index');
     // websites-requirements
-    Route::get('/platform/websites-requirements' , [PlatformController::class,'websites_requirements'])->name('websites_requirements');
+    Route::get('platform/websites-requirements' , [PlatformController::class,'websites_requirements'])->name('websites_requirements');
     // websites/verify/unique
-    Route::get('/platform/websites/verify/unique' , [PlatformController::class,'verify_unique'])->name('verify_unique');
+    Route::get('platform/websites/verify/unique' , [PlatformController::class,'verify_unique'])->name('verify_unique');
 
     // publisher routes
-    Route::post('/publisher/website/send', [PublisherController::class,'submit_url'])->name('submit_url');
+    //Route::get('platform/publisher/website/send', [PublisherController::class,'submit_url'])->name('submit_url');
     // /websites/unique
-    Route::post('/publisher/website/unique', [PublisherController::class,'website_unique'])->name('website_unique');
+    Route::any('platform/publisher/website/website_unique', [PublisherController::class,'website_unique'])->name('website_unique');
+
+    // store publisher website with disable status
+    Route::post('platform/publisher/website/store_site', [PublisherController::class,'store_site'])->name('store_site');
+
+    // get all performers and site publishers
+    Route::post('platform/performers', [PublisherController::class,'performers'])->name('performers');
+
+    // route for showthe publisheres tasks
+    //Route::get();
+
 
 });
