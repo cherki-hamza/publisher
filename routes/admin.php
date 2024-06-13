@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\PlatformController;
+use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PublisherController;
@@ -23,6 +24,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::post('user/show', 'show')->middleware(['permission:read user'])->name('user.show');
         Route::put('user', 'update')->middleware(['permission:update user'])->name('user.update');
         Route::delete('user', 'destroy')->middleware(['permission:delete user'])->name('user.destroy');
+        Route::get('user/profile', 'user_profile')->name('user_profile');
+        Route::put('user/{user_id}/update_profile', 'update_profile')->name('update_profile');
     });
 
     // Security routes
@@ -51,6 +54,18 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     });
 
 
+    // publisher settings
+    Route::get('publisher/settings',[SettingController::class,'settings'])->name('settings');
+    // application settings
+    Route::get('publisher/settings/application_settings',[SettingController::class,'application_settings'])->name('application_settings');
+
+    // publisher balance
+    Route::get('publisher/balance',[SettingController::class,'publisher_balance'])->name('publisher_balance');
+
+    // publisher faq
+    Route::get('publisher/faq',[SettingController::class,'publisher_faq'])->name('publisher_faq');
+
+
     // platform routes
     Route::get('platform' , [PlatformController::class,'index'])->name('platform_index');
     // websites-requirements
@@ -69,8 +84,45 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // get all performers and site publishers
     Route::post('platform/performers', [PublisherController::class,'performers'])->name('performers');
 
-    // route for showthe publisheres tasks
-    //Route::get();
+    // delete site or destroy sites
+    Route::delete('platform/site/destroy', [PublisherController::class,'destroy_site'])->name('destroy_site');
+
+    // route for show the tasks preg_replace("(^https?://)", "", 'http://hamza.com')
+    //Route::get('platform/user/{user_id}/site/{site_id}/tasks', [PublisherController::class,'site_tasks'])->name('site_tasks');
+    // route for get tasks for every website
+    Route::get('platform/user/{user_id}/site/{site_id}/task/{task_id}/show', [PublisherController::class,'show_task'])->name('show_task');
+
+    // route for get tasks for every website
+    Route::get('platform/user/{user_id}/site/{site_id}/tasks', [PublisherController::class,'site_tasks'])->name('site_tasks');
+
+
+    // route for  publisher approve task
+   Route::put('platform/task/{task_id}/publisher_approve_task' , [PublisherController::class,'publisher_approve_task'])->name('publisher_approve_task');
+   //route for publisher reject task
+   Route::put('platform/task/{task_id}/publisher_reject_task' , [PublisherController::class,'publisher_reject_task'])->name('publisher_reject_task');
+
+    // route for get tasks and posts not started
+    Route::get('publisher/tasks/opentasks' , [PublisherController::class,'opentasks'])->name('opentasks');
+
+    // route for get tasks pending_approval
+    Route::get('publisher/tasks/opentasks/in_progress' , [PublisherController::class,'task_in_progress'])->name('task_in_progress');
+
+    // route for get tasks pending_approval
+    Route::get('publisher/tasks/opentasks/pending_approval' , [PublisherController::class,'task_pending_approval'])->name('task_pending_approval');
+
+    // route for get tasks improvement
+    Route::get('publisher/tasks/opentasks/improvement' , [PublisherController::class,'task_improvement'])->name('task_improvement');
+
+    // route for get tasks waiting_approval
+    Route::get('publisher/tasks/opentasks/waiting_approval' , [PublisherController::class,'task_waiting_approval'])->name('task_waiting_approval');
+
+    // route for get tasks completed
+    Route::get('publisher/tasks/opentasks/completed' , [PublisherController::class,'task_completed'])->name('task_completed');
+
+    // route for get tasks rejected
+    Route::get('publisher/tasks/opentasks/rejected' , [PublisherController::class,'task_rejected'])->name('task_rejected');
+
+
 
 
 });

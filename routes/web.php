@@ -25,6 +25,7 @@ use PhpParser\Node\Stmt\TryCatch;
 use SheetDB\SheetDB;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Notification;
 
@@ -45,9 +46,16 @@ use Illuminate\Support\Facades\Notification;
 
 
     Route::get('/', function () {
-
         $sites = Site::all();
         return view('site' , compact('sites'));
     })->name('index');
 
+
+    Route::get('/dev', function () {
+
+    return DB::connection('mysql')->table('sites')->where(function($query){
+         $query->where('site_url','https://ott.ae');
+    })->first();
+
+    })->name('dev');
 

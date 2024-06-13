@@ -204,4 +204,79 @@ class UserController extends Controller
         $user->save();
         return back()->with('success', "Password Changed Successfully");
     }
+
+    // show user profile
+    public function user_profile(){
+        return view('admin.user.profile');
+    }
+
+
+    public function update_profile(Request $request, $id)
+    {
+
+         // get user profile and update the profile informations
+         $user = auth()->user();
+         $profile = Profile::findOrFail($id);
+        //return public_path('assets\images\profiles');
+
+       // return public_path('/assets/images/profiles');
+
+        if ($request->hasFile('picture')){
+
+            $photo = $request->file('picture');
+            $path = public_path('assets/images/profiles');
+
+            if (!is_dir($path)){
+                mkdir($path , 0777 , true);
+            }
+
+            $file_extension = $photo->extension();
+
+
+            $file_name = 'profile_'.rand(1,100).'_'.time() . '.' . $file_extension;
+
+            $photo->move($path,$file_name);
+
+
+
+            $profile->update([
+                'picture'=> '/assets/images/profiles/'.$file_name,
+           ]);
+
+
+        }
+
+
+
+
+
+
+      /*   $request->validate([
+            'fullname'=> $request->fullname,
+            'email'=> $request->email,
+            'mobile'=> $request->mobile,
+            'company_name'=> $request->company_name,
+            'company_website'=> $request->company_website,
+        ]);
+ */
+        $profile->update([
+            'fullname'=> $request->fullname,
+            'email'=> $request->email,
+            'mobile'=> $request->mobile,
+            'company_name'=> $request->company_name,
+            'company_website'=> $request->company_website,
+        ]);
+
+
+        $user->update([
+            'name'=> $request->fullname,
+       ]);
+
+
+        //toastr()->addSuccess('Profile Updated with success.');
+
+        return back()->with('success','Profile Informations Updated with success');
+
+
+    }
 }

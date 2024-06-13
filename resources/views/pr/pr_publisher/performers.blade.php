@@ -336,74 +336,6 @@
                                 </div>
                             </div>
 
-                            <div class="modal fade" id="deleteWebsite-7" tabindex="-1"
-                                aria-labelledby="basicModalLabel" style="display: none;" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <form action="https://icopify.co/performers/959595" method="POST"></form>
-                                        <input type="hidden" name="_token"
-                                            value="KIvSfdStJs4pU8tuoCc4LsiGTw3fibHbwZMW9Xtj"> <input type="hidden"
-                                            name="_method" value="DELETE">
-                                        <div class="modal-header bg-danger">
-                                            <h5 class="modal-title text-white" id="basicModalLabel"><svg
-                                                    style="width: 20px" class="svg-inline--fa fa-trash-alt fa-w-14"
-                                                    aria-hidden="true" focusable="false" data-prefix="far"
-                                                    data-icon="trash-alt" role="img"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                                                    data-fa-i2svg="">
-                                                    <path fill="currentColor"
-                                                        d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z">
-                                                    </path>
-                                                </svg><!-- <i class="far fa-trash-alt"></i> Font Awesome fontawesome.com -->
-                                                Remove <strong class="">fredeo.com</strong>
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close" style="outline: none !important; box-shadow: none;">
-                                                <span aria-hidden="true" class="text-white">×</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="card shadow-none">
-                                                <div class="card-body m-n3">
-
-                                                    <div class="custom-control custom-checkbox text-center mb-2">
-                                                        <span class="">
-                                                            Yes, I want to remove <strong
-                                                                class="text-danger font-weight-bold">www.fredeo.com</strong>
-                                                        </span>
-                                                        <hr>
-
-                                                        <span class="text-facebook">Ps: This site will still be count
-                                                            amount the websites you have added but will not been shown on
-                                                            your account</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer bg-300">
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-danger">
-                                                    <svg style="width: 20px"
-                                                        class="svg-inline--fa fa-trash-alt fa-w-14 mr-2"
-                                                        aria-hidden="true" focusable="false" data-prefix="far"
-                                                        data-icon="trash-alt" role="img"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                                                        data-fa-i2svg="">
-                                                        <path fill="currentColor"
-                                                            d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z">
-                                                        </path>
-                                                    </svg><!-- <i class="far fa-trash-alt mr-2"></i> Font Awesome fontawesome.com -->
-                                                    <strong>Remove</strong>
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="modal fade" id="activateActivityStatus2933" tabindex="-1"
                                 aria-labelledby="basicModalLabel" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -522,14 +454,15 @@
                                 </div>
                             </div>
 
-                            <div class="modal fade" id="deleteWebsite-2933" tabindex="-1"
+                            {{-- start Modal delete --}}
+                            <div class="modal fade" id="deleteWebsite" tabindex="-1"
                                 aria-labelledby="basicModalLabel" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <form action="https://icopify.co/performers/959536" method="POST"></form>
-                                        <input type="hidden" name="_token"
-                                            value="KIvSfdStJs4pU8tuoCc4LsiGTw3fibHbwZMW9Xtj"> <input type="hidden"
-                                            name="_method" value="DELETE">
+                                        <form action="{{ route('destroy_site') }}" method="POST">
+                                         @csrf
+                                         @method('DELETE')
+                                         <input type="hidden" name="site_id" id="did">
                                         <div class="modal-header bg-danger">
                                             <h5 class="modal-title text-white" id="basicModalLabel"><svg
                                                     style="width: 20px" class="svg-inline--fa fa-trash-alt fa-w-14"
@@ -541,7 +474,7 @@
                                                         d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z">
                                                     </path>
                                                 </svg><!-- <i class="far fa-trash-alt"></i> Font Awesome fontawesome.com -->
-                                                Remove <strong class="">forbesposts.com</strong>
+                                                Remove <strong class="site_name" id="delete-data"></strong>
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close" style="outline: none !important; box-shadow: none;">
@@ -555,11 +488,11 @@
                                                     <div class="custom-control custom-checkbox text-center mb-2">
                                                         <span class="">
                                                             Yes, I want to remove <strong
-                                                                class="text-danger font-weight-bold">www.forbesposts.com</strong>
+                                                                class="text-danger font-weight-bold" id="delete-data"></strong>
                                                         </span>
                                                         <hr>
 
-                                                        <span class="text-facebook">Ps: This site will still be count
+                                                        <span class="text-primary">Ps: This site will still be count
                                                             amount the websites you have added but will not been shown on
                                                             your account</span>
                                                     </div>
@@ -585,10 +518,12 @@
                                             </div>
                                         </div>
 
-
+                                    </form>
                                     </div>
                                 </div>
                             </div>
+                            {{-- end Modal delete --}}
+
                             {{-- end modals --}}
 
                             {{-- start table --}}
@@ -600,16 +535,14 @@
                                         <th scope="col">Website URL</th>
 
                                         <th style="color: goldenrod;font-size: 25px;" scope="col" class="text-center">
-                                            Tasks
+                                            New Tasks
                                             <i class="fa fa-tasks" aria-hidden="true"></i>
                                         </th>
-
-                                        <th scope="col" class="text-center d-xl-table-cell d-none">Website Status</th>
                                         <th scope="col" class="text-center">Activity Status</th>
                                         <th scope="col" class="text-center">Placement</th>
                                         <th scope="col" class="text-center">Creation &amp; Placement</th>
                                         <th scope="col" class="text-center">Link Insertion
-                                            <svg style="width: 20px"
+                                             <svg style="width: 20px"
                                                 class="svg-inline--fa fa-info-circle fa-w-16 text-facebook"
                                                 data-html="true" data-content="Only Website Owner are eligible"
                                                 data-placement="right" data-toggle="popover" data-container="body"
@@ -623,8 +556,9 @@
                                             </svg>
                                         </th>
 
-                                        <th scope="col" class="text-center">Edit</th>
-                                        <th scope="col" class="text-center">Action</th>
+                                        <th scope="col" class="text-center d-xl-table-cell d-none">Website Status</th>
+                                        <th scope="col" class="text-center">Edit\Delete</th>
+
                                     </tr>
                                 </thead>
                                  {{-- end thead --}}
@@ -633,8 +567,8 @@
                                 <tbody>
 
                                     @foreach ($sites as $site)
-                                    <tr>
-                                        <td class="align-middle"><a href="https://www.fredeo.com" rel="nofollow"
+                                    <tr class="{{ ($site->super_admin_status == '0')? 'bg-warning' :'' }}">
+                                        <td class="align-middle"><a href="{{ $site->site_url }}" rel="nofollow"
                                                 target="_blank" class="text-decoration-none">
                                                 {{ $site->site_url }}
                                             </a>
@@ -642,19 +576,16 @@
                                         </td>
 
                                         <td class="text-center align-middle d-xl-table-cell d-none"><span
-                                                class="badge badge-pill  badge-soft-success text-center">50 Task</span>
-                                        </td>
+                                                class="badge badge-pill  badge-soft-success text-center">
+                                                <a href="{{ route('site_tasks' , ['user_id' => $site->user_id , 'site_id' => $site->id ] ) }}">
 
-                                        <td class="text-center align-middle d-xl-table-cell d-none">
-
-                                            <span class="badge badge-pill badge-soft-success text-center">
-                                                {{ $site->publisher_site_status() }}
+                                                  <span style="font-size: 25px;" class="text-primary">{{ $site->tasks_count() ?? '' }} Tasks</span>
+                                                </a>
                                             </span>
-
                                         </td>
 
                                         <td class="text-center align-middle">
-                                            <span class="badge badge-pill badge-soft-success text-center">Active</span>
+                                            <span class="badge badge-pill badge-soft-success text-center">{!! $site->site_activity_status() !!}</span>
                                         </td>
 
                                         <td class="text-center align-middle">
@@ -673,6 +604,14 @@
                                             <div class="">
                                                {!! $site->link_insertion() !!}
                                             </div>
+                                        </td>
+
+                                        <td class="text-center align-middle d-xl-table-cell d-none">
+
+                                            <span class="badge badge-pill badge-soft-success text-center">
+                                                {!! $site->publisher_site_status() !!}
+                                            </span>
+
                                         </td>
 
 
@@ -697,9 +636,9 @@
 
 
 
-                                                <a href="#" role="button" class="btn btn-danger btn-sm ml-1"
-                                                    data-toggle="modal" data-target="#deleteWebsite-7" data-html="true"
-                                                    data-content="Delete <strong class='text-danger font-weight-bold'>fredeo.com</strong> from your account"
+                                                <a href="#" role="button" class="btn btn-danger btn-sm ml-1 btn-delete" data-siteid="{{ $site->id }}" data-sitename="{{ $site->site_url }}"
+                                                    data-toggle="modal" data-target="#deleteWebsite" data-html="true"
+                                                    data-content="Delete <strong class='text-danger font-weight-bold'>{{ $site->site_url }}</strong> from your account"
                                                     data-placement="left" data-container="body" data-trigger="hover">
                                                     <svg style="width: 20px"
                                                         class="svg-inline--fa fa-trash-alt fa-w-14 fs-0"
@@ -717,7 +656,7 @@
                                         {{-- end edit and delete --}}
 
                                         {{-- start Action --}}
-                                        <td class="align-middle">
+                                        {{-- <td class="align-middle">
                                             <div class="text-center">
                                                 <form action="https://icopify.co/performers/status/959595" method="POST"
                                                     class="d-inline">
@@ -750,7 +689,7 @@
 
 
                                             </div>
-                                        </td>
+                                        </td> --}}
                                          {{-- end Action --}}
 
                                     </tr>
@@ -780,8 +719,47 @@
         </section>
         <!-- /.content -->
 
+        {{-- start  Modal delete --}}
+    {{-- <div class="modal fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete User</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('DELETE')
+                        <p class="modal-text">Are you sure you want to delete it? <b id="delete-data"></b></p>
+                        <input type="hidden" name="id" id="did">
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+    {{-- end Modal delete --}}
+
     </div>
 @endsection
 
 @section('js')
+
+<script>
+     // start user delete modal
+     $(document).on("click", '.btn-delete', function() {
+        let id = $(this).attr("data-siteid");
+        let name = $(this).attr("data-sitename");
+        $("#did").val(id);
+        $("#delete-data").html(name);
+        $('#modal-delete').modal({backdrop: 'static', keyboard: false, show: true});
+      });
+      // end user delete modal
+</script>
 @endsection

@@ -33,4 +33,8 @@ class Helper
    }
 
 
+    public static function removeHttpHttps($url) {
+       return preg_replace("(^https?://)", "", $url);
+   }
+
 }

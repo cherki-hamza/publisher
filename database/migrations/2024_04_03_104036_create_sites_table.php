@@ -37,7 +37,10 @@ return new class extends Migration
             $table->string('spam_score')->nullable();
             $table->string('word_limite')->nullable();
             $table->text('special_requirement')->nullable();
-            $table->enum('site_status',[1,0])->default(0);
+            $table->enum('site_status',[0,1,2])->default(2);
+            $table->enum('super_admin_status',[0,1])->default(1);
+            $table->enum('publisher_status',[0,1])->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,25 +1,29 @@
 <?php
 
-use App\Http\Controllers\Backend\BalanceController;
-use App\Http\Controllers\Backend\BillingController;
-use App\Http\Controllers\Backend\OrderController;
-use App\Http\Controllers\Backend\Payment\PaypalController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\ProjectController;
-use App\Http\Controllers\Backend\SettingController;
-use App\Http\Controllers\Backend\SiteController;
-use App\Http\Controllers\Backend\TaskController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\backend\SuperAdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
+
+
+   // route for super admin show all publisher sites
+   // route for all publisher sites for super admin
+   Route::get('all_publishers',[SuperAdminController::class,'all_publishers'])->name('all_publishers');
+   Route::post('all_publishers/{search?}',[SuperAdminController::class,'all_publishers'])->name('all_publishers_search');
+
+   // route for all disabled publisher sites
+   Route::get('all_disabled_publishers',[SuperAdminController::class,'all_disabled_publishers'])->name('all_disabled_publishers');
+   Route::post('all_disabled_publishers/{search?}',[SuperAdminController::class,'all_disabled_publishers'])->name('all_disabled_publishers_search');
+
+   // route for approve publisher
+   Route::put('approve_site/{site_id}/approve' , [SuperAdminController::class,'approve_site'])->name('approve_site');
+   //route for disapprove publisher
+   Route::put('reject_site/{site_id}/reject' , [SuperAdminController::class,'reject_site'])->name('reject_site');
+   // ban_site
+   Route::put('ban_site/{site_id}/ban_site' , [SuperAdminController::class,'ban_site'])->name('ban_site');
 
     /* // route for Projects
     Route::post('projects/update_status' , [ProjectController::class,'update_status'])->name('update_status');

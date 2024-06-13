@@ -26,6 +26,7 @@
             </a>
         </li>
         <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link pr-0" id="navbarDropdownUser" href="#"
+            
                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <div class="avatar avatar-xl">
                     <img style="width: 35px" class="rounded-circle shadow border-primary mr-3"
@@ -41,7 +42,7 @@
                      </a>
                      @endif
 
-                    <a class="dropdown-item has-icon loading-trigger" href=""><svg style="width: 25px"
+                    <a class="dropdown-item has-icon loading-trigger" href="{{ route('user_profile') }}"><svg style="width: 25px"
                             class="svg-inline--fa fa-user-cog fa-w-20 mr-2" aria-hidden="true" focusable="false"
                             data-prefix="fas" data-icon="user-cog" role="img" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 640 512" data-fa-i2svg="">
@@ -51,11 +52,11 @@
                         </svg><!-- <i class="fas fa-user-cog mr-2"></i> Font Awesome fontawesome.com -->Profile
                     </a>
 
-                    <a class="dropdown-item has-icon loading-trigger" href="">
+                    <a class="dropdown-item has-icon loading-trigger" href="{{ route('settings') }}">
                         <i class="fa fa-cog mr-2"></i>{{ (auth()->user()->role == 'super-admin')? 'Super-Admin' : 'User' }} Settings
                      </a>
 
-                    <a class="dropdown-item has-icon loading-trigger" href=""><svg style="width: 25px"
+                    <a class="dropdown-item has-icon loading-trigger" href="{{ route('publisher_balance') }}"><svg style="width: 25px"
                             class="svg-inline--fa fa-wallet fa-w-16 mr-2" aria-hidden="true" focusable="false"
                             data-prefix="fas" data-icon="wallet" role="img" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512" data-fa-i2svg="">
