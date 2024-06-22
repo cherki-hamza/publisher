@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\TaskController;
 use App\Http\Controllers\backend\SuperAdminController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\PayPalService;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,6 +24,53 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
    Route::put('reject_site/{site_id}/reject' , [SuperAdminController::class,'reject_site'])->name('reject_site');
    // ban_site
    Route::put('ban_site/{site_id}/ban_site' , [SuperAdminController::class,'ban_site'])->name('ban_site');
+
+   // super admin get and controle the client tasks
+   Route::get('tasks/clients_tasks',[TaskController::class,'clients_tasks'])->name('clients_tasks');
+   // show tasks for every site by user
+   Route::get('tasks/user/{user_id}/sites',[TaskController::class,'publisher_sites'])->name('publisher_sites');
+   // route for get the tasks for site
+   Route::get('tasks/user/{user_id}/site/{site_id}/publisher_site_tasks',[TaskController::class,'publisher_site_tasks'])->name('publisher_site_tasks');
+
+   // show task for super admin
+   Route::get('task/{task_id}/show',[TaskController::class,'admin_show_task'])->name('admin_show_task');
+
+   // route for super admin approve the task from client to publisher
+   Route::any('task/{task_id}/admin_approve_task',[TaskController::class,'admin_approve_task'])->name('admin_approve_task');
+
+   // route for super admin reject the task from client to publisher
+   Route::any('task/{task_id}/admin_reject_task',[TaskController::class,'admin_reject_task'])->name('admin_reject_task');
+
+
+   // send payement to publisher
+   //Route::any('publisher/send',[TaskController::class,'super_admin_send_to_publisher'])->name('super_admin_send_to_publisher');
+
+
+   Route::any('publisher/send', function(){
+     $payPalService = new PayPalService;
+
+     $recipientEmail = 'cherki0hamza@gmail.com'; //$request->input('email');
+     $amount = 1000; //$request->input('amount');
+     $currency = 'USD'; //$request->input('currency', 'USD');
+
+     //$response = $this->payPalService->sendMoney($recipientEmail, $amount, $currency);
+
+     $response = $payPalService->sendMoney($recipientEmail, $amount, $currency);
+
+     if (isset($response['batch_header']['batch_status']) && $response['batch_header']['batch_status'] === 'SUCCESS') {
+        return response()->json([
+            'status' => 'success',
+            'data' => $response,
+        ], 200);
+    } else {
+        return response()->json([
+            'status' => 'error',
+            'message' => $response['message'] ?? 'An error occurred during payout.',
+            'details' => $response['details'] ?? [],
+        ], 400);
+    }
+
+   });
 
     /* // route for Projects
     Route::post('projects/update_status' , [ProjectController::class,'update_status'])->name('update_status');

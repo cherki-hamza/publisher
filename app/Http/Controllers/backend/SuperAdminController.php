@@ -22,7 +22,7 @@ class SuperAdminController extends Controller
                           ->OrWhere('site_url' , 'like', '%' . request('search') . '%')
                           ->paginate(12);
         } else {
-            $sites = Site::on('mysql_main_pr')->where('site_status', '1')->paginate(12);
+            $sites = Site::on('mysql_main_pr')->whereNotNull('site_c_p_price')->where('site_status', '1')->paginate(12);
         }
 
 
@@ -101,5 +101,7 @@ class SuperAdminController extends Controller
         return redirect()->back()->with('danger','Oops there is no site found here? try again ..');
        }
     }
+
+
 
 }

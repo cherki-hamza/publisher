@@ -186,12 +186,12 @@
       }
 
       .btn-primary table td {
-        background-color: #2600ff;
+        background-color: #00ddff;
       }
 
       .btn-primary a {
-        background-color: #2600ff;
-        border-color: #2600ff;
+        background-color: #00ddff;
+        border-color: #00ddff;
         color: #ffffff;
       }
 
@@ -404,7 +404,7 @@
                                   <tbody>
                                     <tr>
                                       <td>
-                                        <a href="{{ route('admin') }}" target="_blank"
+                                        <a href="{{ route('publisher_open_task', ['task_id'=> $id , 'task_type' => $task_type]) }}" target="_blank"
                                           >Go To Your Task</a
                                         >
                                       </td>

@@ -15,9 +15,11 @@ class PlatformController extends Controller
       // check if publisher has at list one site
       $tasks =  Task::on('mysql_main_pr')
                     ->where('site_id' , $request->site_id)
+                    ->where('admin_status' , 1)
                     ->with('site')->get();
 
                   $tasks_count =  Task::on('mysql_main_pr')
+                    ->where('admin_status' , 1)
                     ->where('site_id' , $request->site_id)
                     ->count();
 

@@ -3,14 +3,36 @@
 @section('style')
    <style>
     .alert-primary {
-  color: #174077;
-  background-color: #d5e5fa;
-  border-color: #c4daf8;
+    color: #174077;
+    background-color: #d5e5fa;
+    border-color: #c4daf8;
+    }
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 83%; /* Full height of the parent div */
+      position: absolute;
+      width: 100%;
+      top: 0x;
+      left: 0;
+      z-index: 1; /* Ensure it is above the content */
+      background-color: white;
+    }
+
+    /* Initially hide the content */
+    .content{
+      display: none;
+    }
    </style>
 @endsection
 
 @section('content')
+
+
+
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -28,6 +50,10 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
+
+        <div class="loader">
+            <img src="{{ asset('public/assets/images/loading.gif') }}" alt="Loading...">
+         </div>
 
         <!-- Main content -->
         <section class="content">
@@ -319,4 +345,19 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('js')
+<script>
+    // Function to hide loader and show content
+    function showContent() {
+      document.querySelector('.loader').style.display = 'none';
+      document.querySelector('.content').style.display = 'block';
+    }
+
+    // Simulate content loading
+    window.addEventListener('load', () => {
+      setTimeout(showContent, 3000); // Change 3000 to the desired delay in milliseconds
+    });
+  </script>
 @endsection

@@ -26,7 +26,7 @@
             </a>
         </li>
         <li class="nav-item dropdown dropdown-on-hover"><a class="nav-link pr-0" id="navbarDropdownUser" href="#"
-            
+
                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <div class="avatar avatar-xl">
                     <img style="width: 35px" class="rounded-circle shadow border-primary mr-3"

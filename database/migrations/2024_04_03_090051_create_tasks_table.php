@@ -30,6 +30,9 @@ return new class extends Migration
             $table->text('task_special_requirement')->nullable();
             $table->text('task_post_placement_url')->nullable();
             $table->string('db')->default('publisher');
+            $table->integer('c_status')->default(2);
+            $table->integer('admin_status')->default(2);
+            $table->integer('p_status')->default(2);
             $table->integer('publisher_status')->default(2);
             $table->integer('publisher_final_status')->default(2);
             $table->timestamps();

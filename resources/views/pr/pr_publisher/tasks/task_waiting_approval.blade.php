@@ -260,7 +260,7 @@
 
                                                     <td class="text-center">
                                                         <div class="btn-group">
-                                                            <a href="" class="btn  btn-primary mx-2" ><i class="fa fa-eye mr-2"></i>
+                                                            <a href="{{ route('publisher_open_task' , ['task_id' => $task->id , 'task_type' => $task->task_type ]) }}" class="btn  btn-primary mx-2" ><i class="fa fa-eye mr-2"></i>
                                                                 Show The Task Request
                                                             </a>
                                                         </div>

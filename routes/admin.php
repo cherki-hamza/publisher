@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\PlatformController;
+use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
@@ -100,6 +101,18 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
    Route::put('platform/task/{task_id}/publisher_approve_task' , [PublisherController::class,'publisher_approve_task'])->name('publisher_approve_task');
    //route for publisher reject task
    Route::put('platform/task/{task_id}/publisher_reject_task' , [PublisherController::class,'publisher_reject_task'])->name('publisher_reject_task');
+
+   // merhod for open the task and staart the task publisher_open_task
+   Route::get('platform/task/{task_id}/{task_type}/open_task' , [PublisherController::class,'publisher_open_task'])->name('publisher_open_task');
+
+   //Route::post('platform/task/{task_id}/{task_type}/publisher_start_task' , [PublisherController::class,'publisher_start_task'])->name('publisher_start_task');
+
+   Route::any('platform/task/{task_id}/{task_type}/publisher_handele_task' , [PublisherController::class,'publisher_handele_task'])->name('publisher_handele_task');
+
+   // route for store post for task content creation and placement
+   Route::post('platform/task/{task_id?}/post/store_post' , [PostController::class,'store_post'])->name('store_post');
+   // route for update the post content creation and placement
+   Route::post('platform/task/{task_id?}/post/{post_id?}/update_post' , [PostController::class,'update_post'])->name('update_post');
 
     // route for get tasks and posts not started
     Route::get('publisher/tasks/opentasks' , [PublisherController::class,'opentasks'])->name('opentasks');

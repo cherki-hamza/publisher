@@ -111,35 +111,29 @@
                             <div class="btn-group nav">
 
                                 <a href="{{route('opentasks')}}"
-                                    class="btn btn-sm btn-outline-dark d-none d-md-block nav-item nav-link nav-link-fade">Not Started
-                                    <span style="font-size: 20px" class="badge badge-danger badge-pill ml-2">0</span>
+                                    class="btn btn-sm btn-outline-dark d-none d-md-block nav-item nav-link nav-link-fade active">Not Started
+                                    <span style="font-size: 20px" class="badge badge-danger badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',0)->count() ?? '0'  }}</span>
                                 </a>
                                 <a href="{{route('task_in_progress')}}"
                                     class="btn btn-sm btn-outline-info d-none d-md-block nav-item nav-link nav-link-faded">In Progress
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">0</span>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',1)->count() ?? '0'  }}</span>
                                 </a>
                                 <a href="{{route('task_pending_approval')}}"
                                     class="btn btn-sm btn-outline-warning d-none d-md-block nav-item nav-link nav-link-faded">Pending Approval
-                                    <span style="font-size: 20px" class="badge badge-dark  badge-pill ml-2">0</span>
+                                    <span style="font-size: 20px" class="badge badge-dark  badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',2)->count() ?? '0'  }}</span>
                                 </a>
                                 <a href="{{route('task_improvement')}}"
                                     class="btn btn-sm btn-outline-primary d-none d-md-block nav-item nav-link nav-link-faded">Improvement
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">0</span>
-                                </a>
-
-                                <a href="{{route('task_waiting_approval')}}"
-                                    class="btn btn-sm btn-outline-purple d-none d-md-block nav-item nav-link nav-link-faded">Waiting Pr Approve
-                                    <span style="font-size: 20px"
-                                        class="badge badge-dark badge-pill ml-2">0</span>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',4)->count() ?? '0'  }}</span>
                                 </a>
 
                                 <a href="{{route('task_completed')}}"
                                     class="btn btn-sm btn-outline-success d-none d-md-block nav-item nav-link nav-link-faded">Completed
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">0</span></a>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',5)->count() ?? '0'  }}</span></a>
 
                                     <a href="{{route('task_rejected')}}"
-                                    class="btn btn-sm btn-outline-danger d-none d-xl-block nav-item nav-link nav-link-faded active">Rejected
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">0</span></a>
+                                    class="btn btn-sm btn-outline-danger d-none d-xl-block nav-item nav-link nav-link-faded">Rejected
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',6)->count() ?? '0'  }}</span></a>
 
                             </div>
                         </div>
@@ -241,7 +235,7 @@
                                                     <th>Post Placement URL</th>
                                                     <th>Anchor Text</th>
                                                     <th>Price</th>
-                                                    <th>Messsage</th>
+                                                    <th>Messsage</th>pr_user_id
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -260,7 +254,7 @@
 
                                                     <td class="text-center">
                                                         <div class="btn-group">
-                                                            <a href="" class="btn  btn-primary mx-2" ><i class="fa fa-eye mr-2"></i>
+                                                            <a href="{{ route('publisher_open_task' , ['task_id' => $task->id , 'task_type' => $task->task_type ]) }}" class="btn  btn-primary mx-2" ><i class="fa fa-eye mr-2"></i>
                                                                 Show The Task Request
                                                             </a>
                                                         </div>

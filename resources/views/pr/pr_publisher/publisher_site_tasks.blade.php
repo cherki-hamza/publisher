@@ -25,7 +25,7 @@
 
 
                 <div class="card mt-4">
-                    <h1 class="my-2">All Tasks for website : <span class="text-primary">{{ $site_url ?? ''}}</span></h1>
+                    <h1 class="my-2">All Tasks for website : <span class="text-primary">{{    ((str_contains($site_url, 'https'))? $site_url : "https://$site_url") ?? '' }}</span></h1>
                     {{-- <h5>No results found.</h5> --}}
 
                      {{-- start table --}}
@@ -41,6 +41,7 @@
                                     <th>Task Type</th>
                                     <th>Price</th>
                                     <th>Show</th>
+                                    <th>Task Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -66,28 +67,59 @@
                                         </td>
 
                                         <td class="text-center">
+                                           <span class="btn btn-{{ $task->show_status_style() }}">{{ $task->show_status() }}</span>
+                                        </td>
+
+                                        <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                 <div class="row">
-                                                    <span class="text-center mx-3">
+
+                                                     @if($task->publisher_status == 2)
+                                                     <span class="text-center mx-3">
                                                         <form action="{{ route('publisher_approve_task' , ['task_id' => $task->id ]) }}" method="post">
                                                             @csrf
                                                             @method('PUT')
                                                             <button class="btn btn-secondary" type="submit"><i class="fa fa-check mr-1 text-success" aria-hidden="true"></i> <span>Approve</span></button>
                                                         </form>
+                                                      </span>
 
-                                                         </a>
-                                                       </span>
-
-                                                       <span class="text-danger mx-3">
+                                                      <span class="text-danger mx-3">
                                                         <form action="{{ route('publisher_reject_task' , ['task_id' => $task->id ]) }}" method="post">
                                                             @csrf
                                                             @method('PUT')
                                                             <button class="btn btn-secondary" type="submit">
-                                                                 <span><svg class="mr-1" style="width: 20px;" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="25" viewBox="0 0 48 48">
-                                                                    <linearGradient id="GCWVriy4rQhfclYQVzRmda_hRIvjOSQ8I0i_gr1" x1="9.812" x2="38.361" y1="9.812" y2="38.361" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f44f5a"></stop><stop offset=".443" stop-color="#ee3d4a"></stop><stop offset="1" stop-color="#e52030"></stop></linearGradient><path fill="url(#GCWVriy4rQhfclYQVzRmda_hRIvjOSQ8I0i_gr1)" d="M24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,12.955,35.045,4,24,4z M24,38	c-7.732,0-14-6.268-14-14s6.268-14,14-14s14,6.268,14,14S31.732,38,24,38z"></path><linearGradient id="GCWVriy4rQhfclYQVzRmdb_hRIvjOSQ8I0i_gr2" x1="6.821" x2="41.08" y1="6.321" y2="40.58" gradientTransform="translate(-.146 .354)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f44f5a"></stop><stop offset=".443" stop-color="#ee3d4a"></stop><stop offset="1" stop-color="#e52030"></stop></linearGradient><polygon fill="url(#GCWVriy4rQhfclYQVzRmdb_hRIvjOSQ8I0i_gr2)" points="13.371,38.871 9.129,34.629 34.629,9.129 38.871,13.371"></polygon>
-                                                                    </svg>Reject</span></button>
+                                                                 <span>
+                                                                    <i class="fa fa-ban text-danger mr-1"></i>
+                                                                    Reject</span></button>
                                                         </form>
                                                      </span>
+                                                      @endif
+
+                                                      @if($task->publisher_status == 1)
+                                                     <span class="text-center mx-3">
+                                                         <a href="{{ route('publisher_open_task' , ['task_type' => $task->task_type  , 'task_id' => $task->id]) }}" class="btn btn-success">
+                                                            @if ($task->status == 5)
+                                                                 Show Task
+                                                            @else
+                                                              Start The Task
+                                                            @endif
+                                                         </a>
+                                                      </span>
+
+
+                                                      @endif
+
+
+                                                      @if($task->publisher_status == 0)
+                                                     <span class="text-center mx-3">
+                                                        <span class="btn btn-danger">Your Rejected the task</span>
+                                                     </span>
+                                                      @endif
+
+
+
+
+
                                                 </div>
 
                                             </div>

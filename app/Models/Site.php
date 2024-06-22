@@ -13,6 +13,10 @@ class Site extends Model
 
     protected $guarded = [];
 
+    // sit to user
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     // the site hasMany Orders
     public function orders(){
         return $this->hasMany(Order::class);
@@ -149,15 +153,23 @@ class Site extends Model
         }
    } // end svg status
 
-        // site hasMant tasks
+        // site hasMany tasks
         public function tasks(){
-            return $this->hasMany(Task::class);
+          return $this->hasMany(Task::class);
         }
 
         // site count
         public function tasks_count(){
             return $this->hasMany(Task::class)->count();
         }
+
+        // site count by p_status = 1
+        public function tasks_count_p_status(){
+            return $this->hasMany(Task::class)
+                       ->where('admin_status' , 1)
+                       ->count();
+        }
+
 
 
 }

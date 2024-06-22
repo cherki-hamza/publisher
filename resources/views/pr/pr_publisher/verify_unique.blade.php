@@ -43,7 +43,6 @@
                         doesn't have these requirements
                     </div>
 
-
                     <hr>
                     <h4 style="font-weight: 900;font-size: 22px;" class="ml-3 text-primary">Step 1. Add Your Website</h4>
 
@@ -57,7 +56,7 @@
                                 @csrf
                                 <span class="font-weight-bold">URL</span>
                                 <div class="input-group">
-                                    <input type="text" name="url" class="form-control" autocomplete="off"
+                                    <input type="text" name="url" class="form-control @error('url') is-invalid  @enderror" autocomplete="off"
                                         placeholder="http(s)://www." value="https://">
 
                                     <div class="input-group-append">
@@ -65,6 +64,12 @@
                                             Continue</button>
                                     </div>
                                 </div>
+                                @error('url')
+                                <div class="text-danger">
+                                   {{ $message }}
+                                </div>
+                                @enderror
+
 
                             </form>
 

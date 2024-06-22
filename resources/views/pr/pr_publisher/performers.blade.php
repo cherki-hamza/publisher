@@ -570,7 +570,7 @@
                                     <tr class="{{ ($site->super_admin_status == '0')? 'bg-warning' :'' }}">
                                         <td class="align-middle"><a href="{{ $site->site_url }}" rel="nofollow"
                                                 target="_blank" class="text-decoration-none">
-                                                {{ $site->site_url }}
+                                                {{ (str_contains($site->site_url, 'https'))? $site->site_url : "https://$site->site_url" }}
                                             </a>
 
                                         </td>
@@ -579,7 +579,7 @@
                                                 class="badge badge-pill  badge-soft-success text-center">
                                                 <a href="{{ route('site_tasks' , ['user_id' => $site->user_id , 'site_id' => $site->id ] ) }}">
 
-                                                  <span style="font-size: 25px;" class="text-primary">{{ $site->tasks_count() ?? '' }} Tasks</span>
+                                                  <span style="font-size: 25px;" class="text-primary">{{  $site->tasks_count_p_status()  ?? '' }} Tasks</span>
                                                 </a>
                                             </span>
                                         </td>
