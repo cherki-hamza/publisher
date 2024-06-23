@@ -66,12 +66,12 @@ return [
 
         'mysql_main_pr' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
+            'url' => 'https://phpstack-1244355-4462348.cloudwaysapps.com', // env('DATABASE_URL')
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE_MAIN', 'content'),
-            'username' => env('DB_USERNAME_MAIN', 'cherki'),
-            'password' => env('DB_PASSWORD_MAIN', 'root'),
+            'port' => env('DB_PORT', '8082'),  // 3306
+            'database' => env('DB_DATABASE_MAIN', 'rdkwyztqah'),
+            'username' => env('DB_USERNAME_MAIN', 'rdkwyztqah'),
+            'password' => env('DB_PASSWORD_MAIN', 'aA@00112233'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
