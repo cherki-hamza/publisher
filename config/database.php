@@ -66,7 +66,7 @@ return [
 
         'mysql_main_pr' => [
             'driver' => 'mysql',
-            'url' => 'http://phpstack-1244355-4462348.cloudwaysapps.com', // env('DATABASE_URL')
+            'url' => 'phpstack-1244355-4462348.cloudwaysapps.com', // env('DATABASE_URL')
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '8082'),  // 3306
             'database' => env('DB_DATABASE_MAIN', 'rdkwyztqah'),
