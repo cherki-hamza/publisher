@@ -64,7 +64,7 @@
 
                             <div class="col-lg-2 text-center">Websites Approved
                                 <br>
-                                <span>02
+                                <span>{{ $websites_approved }}
                                 </span>
                                 <hr class="border-dashed my-4 d-lg-none">
                             </div>
@@ -78,22 +78,22 @@
                             </div>
                             <div class="col-lg-2 text-center">Tasks Completed
                                 <br>
-                                <span class="ml-auto font-weight-bold">00</span>
+                                <span class="ml-auto font-weight-bold">{{$task_completed}}</span>
                                 <hr class="border-dashed my-4 d-lg-none">
                             </div>
                             <div class="col-lg-2 text-center">Tasks Rejected
                                 <br>
-                                <span class="ml-auto font-weight-bold">00</span>
+                                <span class="ml-auto font-weight-bold">{{$tasks_rejected}}</span>
                                 <hr class="border-dashed my-4 d-lg-none">
                             </div>
                             <div class="col-lg-2 text-center">Tasks in Progress
                                 <br>
-                                <span class="ml-auto font-weight-bold">00</span>
+                                <span class="ml-auto font-weight-bold">{{$tasks_in_progress}}</span>
                                 <hr class="border-dashed my-4 d-lg-none">
                             </div>
                             <div class="col-lg-2 text-center">Tasks Awaiting
                                 <br>
-                                <span class="ml-auto font-weight-bold">00</span>
+                                <span class="ml-auto font-weight-bold">{{$tasks_awaiting}}</span>
                                 <hr class="border-dashed my-4 d-lg-none">
                             </div>
 

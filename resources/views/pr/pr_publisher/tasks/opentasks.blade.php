@@ -112,28 +112,28 @@
 
                                 <a href="{{route('opentasks')}}"
                                     class="btn btn-sm btn-outline-dark d-none d-md-block nav-item nav-link nav-link-fade active">Not Started
-                                    <span style="font-size: 20px" class="badge badge-danger badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',0)->count() ?? '0'  }}</span>
+                                    <span style="font-size: 20px" class="badge badge-danger badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',0)->where('admin_status', 1)->count() ?? '0'  }}</span>
                                 </a>
                                 <a href="{{route('task_in_progress')}}"
                                     class="btn btn-sm btn-outline-info d-none d-md-block nav-item nav-link nav-link-faded">In Progress
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',1)->count() ?? '0'  }}</span>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',1)->where('admin_status', 1)->count() ?? '0'  }}</span>
                                 </a>
                                 <a href="{{route('task_pending_approval')}}"
                                     class="btn btn-sm btn-outline-warning d-none d-md-block nav-item nav-link nav-link-faded">Pending Approval
-                                    <span style="font-size: 20px" class="badge badge-dark  badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',2)->count() ?? '0'  }}</span>
+                                    <span style="font-size: 20px" class="badge badge-dark  badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',2)->where('admin_status', 1)->count() ?? '0'  }}</span>
                                 </a>
                                 <a href="{{route('task_improvement')}}"
                                     class="btn btn-sm btn-outline-primary d-none d-md-block nav-item nav-link nav-link-faded">Improvement
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',4)->count() ?? '0'  }}</span>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',4)->where('admin_status', 1)->count() ?? '0'  }}</span>
                                 </a>
 
                                 <a href="{{route('task_completed')}}"
                                     class="btn btn-sm btn-outline-success d-none d-md-block nav-item nav-link nav-link-faded">Completed
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',5)->count() ?? '0'  }}</span></a>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',5)->where('admin_status', 1)->count() ?? '0'  }}</span></a>
 
                                     <a href="{{route('task_rejected')}}"
                                     class="btn btn-sm btn-outline-danger d-none d-xl-block nav-item nav-link nav-link-faded">Rejected
-                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',6)->count() ?? '0'  }}</span></a>
+                                    <span style="font-size: 20px" class="badge badge-dark badge-pill ml-2">{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',6)->where('admin_status', 1)->count() ?? '0'  }}</span></a>
 
                             </div>
                         </div>

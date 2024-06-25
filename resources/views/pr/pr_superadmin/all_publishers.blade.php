@@ -183,7 +183,7 @@
                                                 </tr>
                                                 @empty
                                                     <tr style="font-size: 20px" class="text-danger text-center">
-                                                        <td colspan="9">Oops no result found</td>
+                                                        <td colspan="12">Oops no result found</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>

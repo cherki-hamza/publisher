@@ -91,4 +91,27 @@ class TaskController extends Controller
         return redirect()->back()->with('danger' , 'Task Rejected with success');
     }
 
+    // method for reset the task
+    public function admin_reset_task(Request $request){
+        $task = Task::on('mysql_main_pr')
+                    ->where('id' , $request->task_id)
+                    ->firstOrFail();
+
+        $task->update([
+            'status' => 1,
+            'task_status' => 1,
+            'p_status' => 1,
+            'publisher_status' => 1,
+            'task_status' => 1,
+        ]);
+
+        // get the order
+         $task->order->update([ 'status' => 1]);
+
+        // close connection
+        DB::purge();
+        return redirect()->back()->with('warning' , 'Task Reset Successfoly');
+    }
+
+
 }

@@ -23,9 +23,16 @@ class PlatformController extends Controller
                     ->where('site_id' , $request->site_id)
                     ->count();
 
+                    $websites_approved = Site::where('site_status','1')->count();
+                    $query = Task::on('mysql_main_pr')->newQuery();
+                    $task_completed = $query->where('admin_status' , 1)->where('status' , 5)->count();
+                    $tasks_rejected = $query->where('admin_status' , 1)->where('status' , 6)->count();
+                    $tasks_in_progress = $query->where('admin_status' , 1)->where('status' , 1)->count();
+                    $tasks_awaiting = $query->where('admin_status' , 1)->where('status' , 2)->count();
+
       $sites = Site::on('mysql_main_pr')->where('user_id',auth()->user()->id)->paginate(10);
       if($sites->count() >= 1){
-        return view('pr.pr_publisher.performers', compact('sites', 'tasks' , 'tasks_count'));
+        return view('pr.pr_publisher.performers', compact('sites', 'tasks' , 'tasks_count','task_completed','tasks_rejected','tasks_in_progress','tasks_awaiting','websites_approved'));
       }else{
         return view('pr.pr_publisher.platform');
       }

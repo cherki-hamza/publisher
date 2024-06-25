@@ -42,8 +42,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
    Route::any('task/{task_id}/admin_reject_task',[TaskController::class,'admin_reject_task'])->name('admin_reject_task');
 
 
-   // send payement to publisher
-   //Route::any('publisher/send',[TaskController::class,'super_admin_send_to_publisher'])->name('super_admin_send_to_publisher');
+     // route for super admin reset the task from client to publisher
+     Route::any('task/{task_id}/admin_reset_task',[TaskController::class,'admin_reset_task'])->name('admin_reset_task');
 
 
    Route::any('publisher/send', function(){

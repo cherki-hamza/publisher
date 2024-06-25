@@ -27,9 +27,9 @@
                             @elseif($task->status == 4)
                                 <span style="font-size: 16px;" class="alert alert-info">The Task is in Approvement Zone</span>
                             @elseif($task->status == 2)
-                                <span style="font-size: 16px;" class="alert alert-info">Your Task is in Approvement Zone Check it And Approve or Send Impprovement Requiest </span>
+                                <span style="font-size: 16px;" class="alert alert-warning">Task  Waiting Approve from Client </span>
                             @else
-                               <span  style="font-size: 25px;" class="alert alert-warning">Your Task still not Started</span>
+                               <span  style="font-size: 25px;" class="alert alert-warning">Task still not Started</span>
                             @endif
 
                         </div>

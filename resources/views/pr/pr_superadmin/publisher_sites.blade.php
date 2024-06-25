@@ -57,7 +57,7 @@
                                                         <td>{{ (str_contains($site->site_url, 'https'))? $site->site_url : "https://$site->site_url" }}</td>
                                                         <td>{{ \App\Models\User::where('id', $site->pr_user_id)->first()->role }}</td>
 
-                                                        <td>{{ $site->tasks->count() }}</td>
+                                                        <td>{{ /* \App\Models\Task::on('mysql_main_pr')->count() */ $site->tasks_count() }}</td>
 
                                                         <td>
                                                             <a href="{{ route('publisher_site_tasks' , ['user_id' => $site->pr_user_id , 'site_id'=>$site->id ]) }}" class="btn btn-primary"><i class="fas fa-eye mr-2"></i>Show  Tasks</a>

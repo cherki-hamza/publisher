@@ -65,6 +65,8 @@ class Task extends Model
             return 'COMPLETED';
         }elseif($this->status == 6){
             return 'REJECTED';
+        }elseif($this->status == 9){
+            return 'Publisher Approve';
         }else{
             return 'NOT STARTED';
         }
@@ -85,6 +87,8 @@ class Task extends Model
             return 'success';
         }elseif($this->status == 6){
             return 'danger';
+        }elseif($this->status == 9){
+            return 'purple';
         }else{
             return 'secondary';
         }

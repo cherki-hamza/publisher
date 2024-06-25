@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\PlatformController;
 use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\admin\TaskController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;

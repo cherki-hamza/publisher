@@ -385,6 +385,12 @@
                         <p>
                             Task Status :   Is Completed , And Its Approved from Publisher And Posted .
                         </p>
+
+                        <br>
+
+                        <p>
+                            Task Placement Url :   <a href="{{ $task_url }}" target="_blank" rel="noopener noreferrer">{{ $task_url }}</a> .
+                        </p>
                         <table
                           role="presentation"
                           border="0"
@@ -404,7 +410,7 @@
                                   <tbody>
                                     <tr>
                                       <td>
-                                        <a href="{{ route('admin') }}" target="_blank"
+                                        <a href="{{ route('publisher_open_task',['task_id'=>$id , 'task_type' => $type]) }}" target="_blank"
                                           >Go To Your Task</a
                                         >
                                       </td>

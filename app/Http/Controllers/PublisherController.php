@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Client\ClientInProgressEmail;
+use App\Mail\CompletedTaskEmail;
 use App\Mail\Publisher\PublisherInProgressEmail;
 use App\Models\Site;
 use App\Models\Task;
@@ -168,7 +169,7 @@ class PublisherController extends Controller
     private function get_tasks($request = null){
         return Task::on('mysql_main_pr')
                     ->where('pr_user_id' , auth()->user()->id)
-                    //->where('order_id' , auth()->user()->id)
+                    ->where('admin_status', 1)
                     ->where('status', 0)
                     ->where('task_status', 0)
                     ->with('site')->paginate(10);
@@ -390,12 +391,12 @@ class PublisherController extends Controller
             $client_email = User::on('mysql_main_pr')->where('id' , $task->user_id)->first()->email;
 
             // send email for task to the client
-            Mail::to($client_email)->send(new ClientInProgressEmail($task));
+            Mail::to($client_email)->send(new CompletedTaskEmail($task));
 
             // deconnect the connection
             DB::purge();
 
-            return redirect()->back()->with('success' , 'Task Completed  & Send Email To client');
+            return redirect()->route('publisher_open_task',['task_id' => $task->id , 'task_type' => $task->task_type])->with('success' , 'Task Completed  & Send Email To client');
 
         }
 
