@@ -82,8 +82,9 @@
                     and advertising fee. That means the final amount you will see in your Paypal account will differ from the one you see here.<br><br></span>
                         <strong><svg style="width: 18px;" class="svg-inline--fa fa-long-arrow-alt-right fa-w-14 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="long-arrow-alt-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"></path></svg><!-- <i class="fas fa-long-arrow-alt-right mr-1"></i> Font Awesome fontawesome.com --> As a website Owner: </strong> After delivering the task, if the Buyer doesn't approve it,
                         it will be automatically marked as completed after 3 days and the funds will be <strong>Available For Withdrawal.</strong> <br><br>
-                    <strong><svg style="width: 18px;" class="svg-inline--fa fa-long-arrow-alt-right fa-w-14 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="long-arrow-alt-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"></path></svg><!-- <i class="fas fa-long-arrow-alt-right mr-1"></i> Font Awesome fontawesome.com --> As a contributor on a website: </strong> After delivering the task, if the Buyer doesn't approve it, it will be automatically marked as completed after 3 days and the funds will move to your <strong>Balance Awaiting</strong>
-                    and it will be <strong>Available For Withdrawal After 21 Days.</strong>
+                    {{--<strong><svg style="width: 18px;" class="svg-inline--fa fa-long-arrow-alt-right fa-w-14 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="long-arrow-alt-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"></path></svg><!-- <i class="fas fa-long-arrow-alt-right mr-1"></i> Font Awesome fontawesome.com -->
+                          As a contributor on a website: </strong> After delivering the task, if the Buyer doesn't approve it, it will be automatically marked as completed after 3 days and the funds will move to your <strong>Balance Awaiting</strong>
+                    and it will be <strong>Available For Withdrawal After 21 Days.</strong> --}}
                     </div>
 
 
@@ -96,7 +97,7 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="h2 d-flex justify-content-between mb-2">
-                                <span>$0.00</span>
+                                <span>${{ $publisher_balance }}</span>
                                 <svg style="width: 18px;" class="svg-inline--fa fa-wallet fa-w-16 mr-2 font-size-lg text-facebook" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wallet" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg><!-- <i class="fas fa-wallet mr-2 font-size-lg text-facebook"></i> Font Awesome fontawesome.com -->
                             </div>
                             <h6>Net Income
@@ -109,7 +110,7 @@
                 <!-- / NET INCOME -->
 
                 <!-- WITHDRAWN -->
-                <div class="col-sm-6 col-xl-4 mb-3">
+                {{-- <div class="col-sm-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="h2 d-flex justify-content-between mb-2">
@@ -122,7 +123,7 @@
                             </h6>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- / WITHDRAWN -->
 
                 <!-- Bonus -->
@@ -136,7 +137,7 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="h2 d-flex justify-content-between mb-2">
-                                <span>$0.00</span>
+                                <span>${{ $publisher_balance_waiting }}</span>
                                 <a class="" href="#"></a><svg style="width: 18px;" class="svg-inline--fa fa-hourglass-half fa-w-12 mr-2 font-size-lg text-facebook" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="hourglass-half" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M360 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24 0 90.965 51.016 167.734 120.842 192C75.016 280.266 24 357.035 24 448c-13.255 0-24 10.745-24 24v16c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24 0-90.965-51.016-167.734-120.842-192C308.984 231.734 360 154.965 360 64c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24zm-75.078 384H99.08c17.059-46.797 52.096-80 92.92-80 40.821 0 75.862 33.196 92.922 80zm.019-256H99.078C91.988 108.548 88 86.748 88 64h208c0 22.805-3.987 44.587-11.059 64z"></path></svg><!-- <i class="fas fa-hourglass-half mr-2 font-size-lg text-facebook"></i> Font Awesome fontawesome.com -->
                             </div>
                             <h6>Balance Awaiting
@@ -150,7 +151,7 @@
                 <!-- / Awaiting -->
 
                 <!-- Reserved -->
-                <div class="col-sm-6 col-xl-4 mb-3">
+                {{-- <div class="col-sm-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="h2 d-flex justify-content-between mb-2">
@@ -163,12 +164,12 @@
                             </h6>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- / Reserved -->
 
                 <!-- AVAILABLE FOR WITHDRAWAL -->
-                <div class="col-sm-6 col-xl-4 mb-3">
+                {{-- <div class="col-sm-6 col-xl-4 mb-3">
                     <div class="card h-100 bg-primary text-white">
                         <div class="card-body">
                             <div class="h2 d-flex justify-content-between mb-2">
@@ -183,12 +184,12 @@
                             </h6>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- / AVAILABLE FOR WITHDRAWAL -->
 
                 <!-- PENDING WITHDRAWAL -->
-                <div class="col-sm-6 col-xl-4 mb-3">
+                {{-- <div class="col-sm-6 col-xl-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="h2 d-flex justify-content-between mb-2">
@@ -201,7 +202,7 @@
                             </h6>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- / PENDING WITHDRAWAL -->
                                     <div class="col">
 
@@ -357,7 +358,7 @@
 
     // Simulate content loading
     window.addEventListener('load', () => {
-      setTimeout(showContent, 3000); // Change 3000 to the desired delay in milliseconds
+      setTimeout(showContent, 2000); // Change 2000 to the desired delay in milliseconds
     });
   </script>
 @endsection

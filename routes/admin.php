@@ -63,6 +63,12 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     // publisher balance
     Route::get('publisher/balance',[SettingController::class,'publisher_balance'])->name('publisher_balance');
+    // route for publiher virify paypale email
+    Route::get('publisher/paypal/verify_email/verify',[SettingController::class,'verify_email'])->name('verify_email');
+     // route for store paypale email
+     Route::any('publisher/paypal/store_paypal_email',[SettingController::class,'store_paypal_email'])->name('store_paypal_email');
+     // route for store paypale email
+     Route::any('publisher/paypal/publisher_verify_code',[SettingController::class,'publisher_verify_code'])->name('publisher_verify_code');
 
     // publisher faq
     Route::get('publisher/faq',[SettingController::class,'publisher_faq'])->name('publisher_faq');
@@ -136,7 +142,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // route for get tasks rejected
     Route::get('publisher/tasks/opentasks/rejected' , [PublisherController::class,'task_rejected'])->name('task_rejected');
 
-
+    // Add a fallback route to catch any other requests
+    Route::fallback(function () {
+        abort(404);
+    });
 
 
 });

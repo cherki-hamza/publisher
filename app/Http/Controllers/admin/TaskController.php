@@ -14,6 +14,7 @@ class TaskController extends Controller
     // get all clients tasks
     public function clients_tasks(){
         $data = User::paginate(10);
+
         return view('pr.pr_superadmin.clients_tasks' , compact('data'));
     }
 

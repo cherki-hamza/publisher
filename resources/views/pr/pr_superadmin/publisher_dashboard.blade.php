@@ -36,7 +36,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
 
-                                        <span>00</span>
+                                        <span>{{ $super_admin_tasks_completed }}</span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-list-ol fa-w-16 font-size-lg text-facebook"
                                             aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list-ol"
@@ -47,16 +47,15 @@
                                             </path>
                                         </svg><!-- <i class="fas fa-list-ol font-size-lg text-facebook"></i> Font Awesome fontawesome.com -->
                                     </div>
-                                    <h5>Open Tasks</h5>
-                                    <p class="small text-secondary mb-0">Tasks waiting for your acceptance or rejection.
-                                        Please accept or reject it within 3 days.</p>
+                                    <h5>Tasks Completed</h5>
+                                    <p class="small text-secondary mb-0">All Completed Tasks</p>
                                 </div>
                             </div>
                         </div>
                         <!-- /Total Purchases -->
 
                         <!-- Complete Order -->
-                        <div class="col-sm-6 col-xl-3 mb-3">
+                       {{--  <div class="col-sm-6 col-xl-3 mb-3">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
@@ -77,11 +76,11 @@
                                         revise it as soon as possible.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- /Complete Order -->
 
                         <!-- Active Order -->
-                        <div class="col-sm-6 col-xl-3 mb-3">
+                       {{--  <div class="col-sm-6 col-xl-3 mb-3">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
@@ -101,7 +100,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- YActive Order -->
 
                         <!-- Current Balance -->
@@ -110,7 +109,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
                                         <span>
-                                            $0.00
+                                            ${{ $super_admin_balance }}
                                         </span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-coins fa-w-16 font-size-lg text-facebook"

@@ -73,8 +73,8 @@
 
                                                     <tr>
                                                         <td class="bg-primary text-white">Publisher's URL</td>
-                                                        <td><a href="{{ str_contains($task->site->site_url, 'https') ? $task->site->site_url : $task->site->site_url }}" target="_blank" rel="nofollow">
-                                                            {{ str_contains($task->site->site_url, 'https') ? $task->site->site_url : 'https://'.$task->site->site_url }}
+                                                        <td><a href="{{ ( empty($task->task_post_placement_url)) ? 'https://'.$task->site->site_url.'/'.Str::slug($task->task_anchor_text) :  $task->task_post_placement_url }}" target="_blank" rel="nofollow">
+                                                            {{ ( empty($task->task_post_placement_url)) ? 'https://'.$task->site->site_url.'/'.Str::slug($task->task_anchor_text) :  $task->task_post_placement_url }}
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -123,7 +123,7 @@
 
                                                 <div class="my-2 px-5">
                                                     <label class="text-primary" for="post_placement_url">Post Placement URL:</label>
-                                                    <input  style="color: red;" value="{{ ( !empty($task->site->site_url)) ? 'https://'.$task->site->site_url.'/'.Str::slug($task->task_anchor_text) :  $task->task_target_url }}" type="text" class="form-control" name="post_placement_url" id="post_placement_url">
+                                                    <input  style="color: red;" value="{{ ( empty($task->task_post_placement_url)) ? 'https://'.$task->site->site_url.'/'.Str::slug($task->task_anchor_text) :  $task->task_post_placement_url }}" type="text" class="form-control" name="post_placement_url" id="post_placement_url">
                                                 </div>
 
                                                 <div class="my-2 px-5">

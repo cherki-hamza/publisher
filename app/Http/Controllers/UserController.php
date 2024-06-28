@@ -41,16 +41,27 @@ class UserController extends Controller
             $user = User::create([
                 'name'      => $request->name,
                 'email'     => $request->email,
-                'password'  => bcrypt($request->password)
+                'password'  => bcrypt($request->password),
+                'role'      => ($request->role === 'superadmin') ? 'super-admin' : $request->role
             ]);
+
             $user->assignRole($request->role);
+
+            $profile = Profile::create([
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'fullname' => $user->name,
+                'mobile' => $user->mobile,
+                'picture' => $user->GetGravatar(),
+            ]);
+
             DB::commit();
-            Alert::success('Pemberitahuan', 'Data <b>' . $user->name . '</b> berhasil dibuat')->toToast()->toHtml();
+            return redirect()->back()->with('success' , 'user created successfoly');
         } catch (\Throwable $th) {
             DB::rollback();
-            Alert::error('Pemberitahuan', 'Data <b>' . $user->name . '</b> gagal dibuat : ' . $th->getMessage())->toToast()->toHtml();
+            return redirect()->back()->with('danger' , 'Oops user not creted check with the super admin.');
         }
-        return back();
+
     }
 
     public function show(Request $request)

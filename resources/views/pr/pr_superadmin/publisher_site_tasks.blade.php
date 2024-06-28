@@ -46,8 +46,9 @@
                                                     <th>#</th>
                                                     <th>Task Anchor Text</th>
                                                     <th>Task site Url</th>
-                                                    <th>Show</th>
                                                     <th>Task Status</th>
+                                                    <th>Show</th>
+                                                    <th>Super Admin Status</th>
                                                     <th>Action</th>
                                                     <th class="bg-danger">Reset Task</th>
                                                 </tr>
@@ -57,7 +58,10 @@
                                                     <tr>
                                                         <td>#{{ $task->id }}</td>
                                                         <td>{{ $task->task_anchor_text }}</td>
+
                                                         <td>{{ (str_contains($task->site->site_url, 'https'))? $task->site->site_url : $task->site->site_url }}</td>
+
+                                                        <td class="text-{{ $task->show_status_style() }}">{{ $task->show_status() }}</td>
 
                                                         <td>
                                                             <a href="{{ route('admin_show_task' , ['task_id'=>$task->id]) }}" class="btn btn-primary"><i class="fas fa-eye mr-2"></i>Show Task</a>

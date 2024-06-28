@@ -59,3 +59,11 @@ use Illuminate\Support\Facades\Notification;
 
     })->name('dev');
 
+     // Add a fallback route to catch any other requests
+     Route::fallback(function () {
+        abort(404);
+    });
+
+
+
+

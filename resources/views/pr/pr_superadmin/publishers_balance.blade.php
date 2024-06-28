@@ -11,7 +11,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">All Client Tasks</li>
+                            <li class="breadcrumb-item active">Publishers Balance</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -29,8 +29,8 @@
                             <div class="card-header">
                                 <h3 class="card-title">
 
-                                    <span style="float: left" class="text-success text-right">
-                                        All Client Tasks
+                                    <span style="float: left" class="text-primary">
+                                        Publishers with Tasks & Balance
                                     </span>
                                 </h3>
 
@@ -40,40 +40,40 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="card-body table-responsive">
-                                        <table id="datatable" class="table table-bordered table-hover text-center datatable">
+                                        <table style="font-size: 22px;" id="datatable" class="table table-bordered table-hover text-center datatable">
                                             <thead class="bg-info">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Role</th>
-                                                    <th>Site Count</th>
-                                                    <th>sites and Tasks</th>
+                                                    <th>Publisher Name</th>
+                                                    <th>Publisher Email</th>
+                                                    <th>Tasks Completed</th>
+                                                    <th>Publisher Balance To Pay</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($data as $i)
-                                                @php
-                                                    if ($i->role === 'super-admin'){
-                                                        continue;
-                                                    }
-                                                @endphp
+                                                    @foreach ($publishers as $publisher)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $i->name }}</td>
-                                                        <td>{{ $i->email }}</td>
-                                                        <td>{{ implode(",", $i->getRoleNames()->toArray()) }}</td>
-                                                        <td>{{  \App\Models\Site::on('mysql_main_pr')->where('user_id' , $i->id )->count() }}</td>
+                                                        <td>#{{ $publisher->id }}</td>
+                                                        <td>{{ $publisher->name }}</td>
+                                                        <td>{{ $publisher->email }}</td>
+                                                        <td>{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id' , $publisher->id )->where('status',5)->count() }}</td>
+                                                        <td><span>$</span>{{  \App\Models\Task::on('mysql_main_pr')->where('pr_user_id' , $publisher->id )->where('status',5)->whereNotIn('id' , \App\Models\PublisherTaskPayment::where('publisher_id' , $publisher->id)->pluck('id'))->sum('task_price') }}</td>
                                                         <td>
-                                                            <a href="{{ route('publisher_sites' , ['user_id'=>$i->id]) }}" class="btn btn-primary"><i class="fas fa-eye mr-2"></i>Show Sites With Tasks</a>
+                                                            <a href="{{ route('publicher_completed_tasks' , ['publisher_id' => $publisher->id ]) }}" class="btn btn-primary"><i class="fas fa-eye mr-2"></i>Show Tasks & Balance</a>
                                                         </td>
-
                                                     </tr>
-                                                @endforeach
+                                                    @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+
+                                {{-- pagination --}}
+                                  <div style="float: right;font-size: 22px" class="row pagination mr-3 my-3 text-right">
+                                    {{ $publishers->links() }}
+                                  </div>
+                                {{-- pagination --}}
                             </div>
                             <!-- /.card-body -->
                         </div>

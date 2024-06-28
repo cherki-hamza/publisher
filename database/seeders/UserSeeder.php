@@ -23,7 +23,8 @@ class UserSeeder extends Seeder
             'name'      => 'Superadmin',
             'email'     => 'hamza@overthetop.ae',
             'password'  => bcrypt('aA@00112233'),
-            'role'      => 'super-admin'
+            'role'      => 'super-admin',
+            'type'      => 'super-admin'
         ]);
         $super_admin_profile = Profile::create([
             'user_id' => $superadmin->id,

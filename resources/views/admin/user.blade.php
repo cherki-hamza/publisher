@@ -181,6 +181,7 @@
                             <label>Role</label>
                             <div class="input-group">
                                 <select class="form-control" name="role">
+                                    <option selected>Select Role</option>
                                     @foreach ($role as $i)
                                         <option value="{{ $i->name }}">{{ $i->name }}</option>
                                     @endforeach

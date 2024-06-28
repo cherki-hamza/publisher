@@ -119,6 +119,11 @@ class Task extends Model
         return Task::where('user_id',auth()->user()->id)->where('status',$taskStatus)->count();
     }
 
+    // method for get the publisher from task by pr_user_id
+    public function publisher_name($id){
+        return User::where('id',$id)->first()->name ?? '';
+    }
+
 
 }
 

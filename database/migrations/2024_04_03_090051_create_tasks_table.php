@@ -35,6 +35,7 @@ return new class extends Migration
             $table->integer('p_status')->default(2);
             $table->integer('publisher_status')->default(2);
             $table->integer('publisher_final_status')->default(2);
+            $table->integer('task_payment')->default(0);
             $table->timestamps();
         });
     }

@@ -36,7 +36,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
 
-                                        <span>00</span>
+                                        <span>{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',0)->where('admin_status', 1)->count() ?? '00'  }}</span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-list-ol fa-w-16 font-size-lg text-facebook"
                                             aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list-ol"
@@ -61,7 +61,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
 
-                                        <span>00</span>
+                                        <span>{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id',auth()->id())->where('status',4)->where('admin_status', 1)->count() ?? '00'  }}</span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-tasks fa-w-16 font-size-lg text-facebook"
                                             aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tasks"
@@ -85,18 +85,10 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
-                                        <span>$0.00</span>
-                                        <svg style="width: 40px"
-                                            class="svg-inline--fa fa-piggy-bank fa-w-18 font-size-lg text-facebook"
-                                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="piggy-bank"
-                                            role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                                            data-fa-i2svg="">
-                                            <path fill="currentColor"
-                                                d="M560 224h-29.5c-8.8-20-21.6-37.7-37.4-52.5L512 96h-32c-29.4 0-55.4 13.5-73 34.3-7.6-1.1-15.1-2.3-23-2.3H256c-77.4 0-141.9 55-156.8 128H56c-14.8 0-26.5-13.5-23.5-28.8C34.7 215.8 45.4 208 57 208h1c3.3 0 6-2.7 6-6v-20c0-3.3-2.7-6-6-6-28.5 0-53.9 20.4-57.5 48.6C-3.9 258.8 22.7 288 56 288h40c0 52.2 25.4 98.1 64 127.3V496c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-48h128v48c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-80.7c11.8-8.9 22.3-19.4 31.3-31.3H560c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16zm-128 64c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zM256 96h128c5.4 0 10.7.4 15.9.8 0-.3.1-.5.1-.8 0-53-43-96-96-96s-96 43-96 96c0 2.1.5 4.1.6 6.2 15.2-3.9 31-6.2 47.4-6.2z">
-                                            </path>
-                                        </svg><!-- <i class="fas fa-piggy-bank font-size-lg text-facebook"></i> Font Awesome fontawesome.com -->
+                                        <span>${{ $publisher_balance_waiting }}</span>
+                                        <svg style="width: 18px;" class="svg-inline--fa fa-hourglass-half fa-w-12 mr-2 font-size-lg text-facebook" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="hourglass-half" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M360 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24 0 90.965 51.016 167.734 120.842 192C75.016 280.266 24 357.035 24 448c-13.255 0-24 10.745-24 24v16c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24 0-90.965-51.016-167.734-120.842-192C308.984 231.734 360 154.965 360 64c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24zm-75.078 384H99.08c17.059-46.797 52.096-80 92.92-80 40.821 0 75.862 33.196 92.922 80zm.019-256H99.078C91.988 108.548 88 86.748 88 64h208c0 22.805-3.987 44.587-11.059 64z"></path></svg>
                                     </div>
-                                    <h5>Reserved</h5>
+                                    <h5>Balance Awaiting</h5>
                                     <p class="small mb-0">The Total amount that have been reserved for incompleted tasks.
                                     </p>
                                 </div>
@@ -110,7 +102,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
                                         <span>
-                                            $0.00
+                                            ${{ $publisher_balance }}
                                         </span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-coins fa-w-16 font-size-lg text-facebook"

@@ -157,7 +157,7 @@ class PublisherController extends Controller
                                     ->where('site_id' , $request->site_id)
                                     ->count();
 
-                 $site_url = Site::on('mysql_main_pr')->where('id' , $request->site_id)->first()->site_url;
+                 $site_url = Site::on('mysql_main_pr')->where('id' , $request->site_id)->firstOrFail()->site_url;
 
                   // close database
                   DB::purge();
@@ -267,7 +267,7 @@ class PublisherController extends Controller
     public function publisher_open_task(Request $request){
         $task = Task::on('mysql_main_pr')
                     ->where('id' , $request->task_id)->with('site','post')
-                    ->first();
+                    ->firstOrFail();
 
         $post =  $task->post;
 

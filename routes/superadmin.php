@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\admin\TaskController;
 use App\Http\Controllers\backend\SuperAdminController;
+use App\Http\Controllers\DashboardController;
 use App\Services\PayPalService;
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth','super_admin_role'])->group(function () {
 
 
    // route for super admin show all publisher sites
@@ -45,6 +46,20 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
      // route for super admin reset the task from client to publisher
      Route::any('task/{task_id}/admin_reset_task',[TaskController::class,'admin_reset_task'])->name('admin_reset_task');
 
+     // route for super admin reset the task from client to publisher
+     Route::get('publishers/balance/publishers_balance',[DashboardController::class,'publishers_balance'])->name('publishers_balance');
+
+     // route for super admin reset the task from client to publisher
+     Route::get('publishers/balance/publishers_balance/{publisher_id}/publicher_completed_tasks',[DashboardController::class,'publicher_completed_tasks'])->name('publicher_completed_tasks');
+
+      // route for super admin reset the task from client to publisher
+      Route::any('publishers/balance/publisher/publishers_Withdrawn',[DashboardController::class,'publishers_Withdrawn'])->name('publishers_Withdrawn');
+
+
+      // route for super admin withdrow payment
+      Route::get('publishers/balance/publisher/{publisher_id}/get_payements',[DashboardController::class,'get_payements'])->name('get_payements');
+      Route::any('publishers/balance/publisher/{publisher_id}/send_payements',[DashboardController::class,'send_payements'])->name('send_payements');
+
 
    Route::any('publisher/send', function(){
      $payPalService = new PayPalService;
@@ -71,6 +86,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     }
 
    });
+
+    // Add a fallback route to catch any other requests
+    Route::fallback(function () {
+        abort(404);
+    });
 
     /* // route for Projects
     Route::post('projects/update_status' , [ProjectController::class,'update_status'])->name('update_status');

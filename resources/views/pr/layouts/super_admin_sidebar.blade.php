@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside style="background-color: #4B49AC;" class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin') }}" class="brand-link"> {{--  --}}
         <img src="{{ asset('public/assets/images/logo.png') }}{{-- {{ asset(Setting::getValue('app_logo')) }} --}}" alt="PR OverTheTop"
@@ -7,7 +7,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div style="font-size: 18px" class="sidebar">
+    <div style="font-size: 18px;color:black;" class="sidebar">
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -113,11 +113,24 @@
                     <li style="font-size: 18px" class="nav-header ml-2 text-danger">Client Tasks Control</li>
                     <li class="nav-item">
 
-                        <a href="{{ route('clients_tasks') }}" class="nav-link {{ request()->routeIs('user_projects') ? 'active':'' }}">
+                        <a href="{{ route('clients_tasks') }}" class="nav-link {{ request()->routeIs('clients_tasks') ? 'active':'' }}">
                             {{-- <i class="fas fa-folder nav-icon"></i> --}}
                             <svg class="svg-inline--fa fa-arrow-right fa-w-14" style="color: yellow;width: 30ps;height: 22px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path>
                             </svg>
                             <p>Client Tasks Control</p>
+                        </a>
+                    </li>
+
+                    <hr>
+
+                    <li style="font-size: 18px" class="nav-header ml-2 text-danger">Publishers payments</li>
+                    <li class="nav-item">
+
+                        <a href="{{ route('publishers_balance') }}" class="nav-link {{ request()->routeIs('publishers_balance') ? 'active':'' }}">
+                            {{-- <i class="fas fa-folder nav-icon"></i> --}}
+                            <svg class="svg-inline--fa fa-arrow-right fa-w-14" style="color: yellow;width: 30ps;height: 22px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path>
+                            </svg>
+                            <p>publishers payments</p>
                         </a>
                     </li>
 
