@@ -36,7 +36,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
 
-                                        <span>{{ $super_admin_tasks_completed ?? 0 }}</span>
+                                        <span>00{{-- {{ $super_admin_tasks_completed ?? 0 }} --}}</span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-list-ol fa-w-16 font-size-lg text-facebook"
                                             aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list-ol"
@@ -109,7 +109,7 @@
                                 <div class="card-body">
                                     <div class="d-flex h2 justify-content-between mb-2">
                                         <span>
-                                            ${{ $super_admin_balance }}
+                                            $00{{-- {{ $super_admin_balance }} --}}
                                         </span>
                                         <svg style="width: 40px"
                                             class="svg-inline--fa fa-coins fa-w-16 font-size-lg text-facebook"
