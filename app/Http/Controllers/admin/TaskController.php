@@ -39,6 +39,7 @@ class TaskController extends Controller
                     ->where('site_id' , $request->site_id)
                     ->where('pr_user_id' , $request->user_id)
                     ->where('c_status' , 1)
+                    ->orderBy('id','DESC')
                     ->get();
 
          // close connection

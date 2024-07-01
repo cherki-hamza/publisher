@@ -11,7 +11,7 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-3"><span   style="font-size: 25px;" class="alert alert-primary">Task ID #{{ $task->id }}</span></div>
+                    <div class="col-sm-3"><span   style="font-size: 25px;opacity: 70%;" class="alert alert-primary opacity-50">Task ID #{{ $task->id }}</span></div>
                     <div class="col-sm-5">
                         @if (!empty($task))
                         <div  class="text-center">
@@ -19,7 +19,7 @@
                             @if ($task->status == 6)
                              <span style="font-size: 25px;" class="alert alert-danger">The Task Is Rejected</span>
                             @elseif($task->status == 5)
-                                <span style="font-size: 19px;" class="alert alert-success opacity-25">The Task Is Completed</span>
+                                <span style="font-size: 19px;opacity: 70%" class="alert alert-success">The Task Is Completed</span>
                             @elseif($task->status == 9)
                                  <span style="font-size: 20px;" class="alert alert-warning">Wait For The Publisher : <span class="text-danger">https://{{ $task->site->site_url }}</span> Approve Your Post</span>
                             @elseif($task->status == 1)

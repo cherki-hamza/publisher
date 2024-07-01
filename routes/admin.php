@@ -70,6 +70,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
      // route for store paypale email
      Route::any('publisher/paypal/publisher_verify_code',[SettingController::class,'publisher_verify_code'])->name('publisher_verify_code');
 
+     // show the payements for publisher
+     Route::get('publisher/{publisher_id}/publisher_payements',[SettingController::class,'publisher_payements'])->name('publisher_payements');
+
     // publisher faq
     Route::get('publisher/faq',[SettingController::class,'publisher_faq'])->name('publisher_faq');
 

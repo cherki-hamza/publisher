@@ -24,4 +24,10 @@ class PublisherTaskPayment extends Model
     }
 
 
+    // relation betwenn task and payement
+    public function task(){
+        return $this->belongsTo(Task::class);
+    }
+
+
 }

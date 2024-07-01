@@ -152,6 +152,15 @@ class SettingController extends Controller
     }
 
 
+    // mthod for show the publisher payements
+    public function publisher_payements(Request $request){
+
+       $payments =  PublisherTaskPayment::on('mysql_main_pr')->where('publisher_id' , auth()->user()->id)->paginate(10);
+       return view('pr.pr_publisher.blance.publisher_payements' , compact('payments'));
+
+    }
+
+
     // method for show the publisherFAQ
     public function publisher_faq(){
         return view('admin.user.publisher_faq');

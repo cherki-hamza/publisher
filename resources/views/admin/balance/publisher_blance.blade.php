@@ -100,10 +100,18 @@
                                 <span>${{ $publisher_balance }}</span>
                                 <svg style="width: 18px;" class="svg-inline--fa fa-wallet fa-w-16 mr-2 font-size-lg text-facebook" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wallet" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg><!-- <i class="fas fa-wallet mr-2 font-size-lg text-facebook"></i> Font Awesome fontawesome.com -->
                             </div>
-                            <h6>Net Income
-                                <svg style="width: 18px;" class="svg-inline--fa fa-question-circle fa-w-16" data-content="All that you have earned to date on iCopify. This does not include upcoming earnings" data-html="true" data-placement="top" data-toggle="popover" data-container="body" data-trigger="hover" data-original-title="" title="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path></svg><!-- <span class="fas fa-question-circle" data-content="All that you have earned to date on iCopify. This does not include upcoming earnings" data-html="true" data-placement="top" data-toggle="popover" data-container="body" data-trigger="hover" data-original-title="" title="">
-                                </span> Font Awesome fontawesome.com -->
-                            </h6>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h6>Net Income
+                                        <svg style="width: 18px;" class="svg-inline--fa fa-question-circle fa-w-16" data-content="All that you have earned to date on iCopify. This does not include upcoming earnings" data-html="true" data-placement="top" data-toggle="popover" data-container="body" data-trigger="hover" data-original-title="" title="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path>
+                                        </svg>
+                                    </h6>
+                                </div>
+                                <div style="font-size: 22px" class="col-6 text-right">
+                                   <a href="{{ route('publisher_payements', ['publisher_id'=>auth()->user()->id]) }}">Show All Payments</a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
