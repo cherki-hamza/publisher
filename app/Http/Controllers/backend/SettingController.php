@@ -52,12 +52,12 @@ class SettingController extends Controller
 
        $payements_ids = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->pluck('id');
 
-       $publisher_balance_waiting = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->whereNotIn('id' ,[1,2])->where('status',5)->sum('task_price');
-
+       $publisher_balance_waiting = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->whereNotIn('id' , $payements_ids)->where('status',5)->sum('task_price');
+       /* return $publisher_balance_waiting; */
         return view('admin.balance.publisher_blance' , compact('tasks_count','paypal_vat','publisher_balance','publisher_balance_waiting'));
     }
 
-    // method for publisher verify paypal emial
+    // method for publisher verify paypal email
     public function verify_email(Request $request){
         $publisher = PublisherVerify::where('user_id',auth()->user()->id)->first();
         return view('pr.pr_publisher.blance.verify_email',compact('publisher'));
@@ -76,6 +76,8 @@ class SettingController extends Controller
                 'paypal_email' => $request->email_verify,
                 'verification_code' => Str::random(8),
             ]);
+
+            $user =  auth()->user()->update(['paypal_email' => $request->email_verify]);
 
             $publisher = PublisherVerify::where('user_id',auth()->user()->id)->first();
 

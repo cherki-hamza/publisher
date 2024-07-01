@@ -18,7 +18,7 @@ class DashboardController extends Controller
 {
    // methode for index admin
    public function index(){
-         
+
        $super_admin_balance = Task::on('mysql_main_pr')->where('status',5)->sum('task_price');
 
        $super_admin_tasks_completed = Task::on('mysql_main_pr')->where('status',5)->count();
@@ -44,8 +44,8 @@ class DashboardController extends Controller
       $publisher = User::where('id' , request()->publisher_id)->first();
       //return $publisher;
 
-      $tasks = Task::on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id )->where('status',5)->whereNotIn('id' , PublisherTaskPayment::where('publisher_id' , $publisher->id)->pluck('id'))->with('order')->paginate(10);
-      $payment_count  =  Task::on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id )->whereNotIn('id' , PublisherTaskPayment::where('publisher_id' , $publisher->id)->pluck('id'))->where('status',5)->sum('task_price');
+      $tasks = Task::on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id )->where('status',5)->whereNotIn('id' , PublisherTaskPayment::where('publisher_id' , $publisher->id)->pluck('task_id'))->with('order')->paginate(10);
+      $payment_count  =  Task::on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id )->whereNotIn('id' , PublisherTaskPayment::where('publisher_id' , $publisher->id)->pluck('task_id'))->where('status',5)->sum('task_price');
 
       return view('pr.pr_superadmin.publicher_completed_tasks',compact('tasks','publisher','payment_count'));
 
@@ -94,7 +94,18 @@ class DashboardController extends Controller
          if($result = 'SUCCESS'){
 
             foreach($tasks as $task){
-            // save PublisherTaskPayment in database
+            // save PublisherTaskPayment in database in Main PR Content
+                PublisherTaskPayment::on('mysql_main_pr')->create([
+                    'user_id' => $task->user_id,
+                    'publisher_id' => $publisher->id,
+                    'publisher_payment_no_vat' =>  $task->task_price,
+                    'publisher_payment_paypal_vat' => (($task->task_price * 10)/100),
+                    'publisher_payment' => ($task->task_price - (($task->task_price * 10)/100)),
+                    'task_id' => $task->id,
+                    'status' => 1
+                ]);
+
+                // save PublisherTaskPayment in database in publisher
                 $publisherTaskPayment = new PublisherTaskPayment();
                 $publisherTaskPayment->user_id = $task->user_id;
                 $publisherTaskPayment->publisher_id  =  $publisher->id;
@@ -107,7 +118,7 @@ class DashboardController extends Controller
             }
             // send email to publisher with invoice
              Mail::to($publisher->email)->send(new SendMoneyToPublisher($publisher,$tasks,$payment_count));
-             return redirect()->back()->with('success' , 'Your Payment by paypal send with success');
+             return redirect()->route('publishers_balance')->with('success' , 'Your Payment by paypal send with success');
          }
 
     } catch (\Throwable $th) {

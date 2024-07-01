@@ -47,23 +47,25 @@
                                                     <th>Publisher Name</th>
                                                     <th>Publisher Email</th>
                                                     <th>Tasks Completed</th>
+                                                    <th>Tasks Payed</th>
                                                     <th>Publisher Balance To Pay</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                    @foreach ($publishers as $publisher)
-                                                    <tr>
-                                                        <td>#{{ $publisher->id }}</td>
-                                                        <td>{{ $publisher->name }}</td>
-                                                        <td>{{ $publisher->email }}</td>
-                                                        <td>{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id' , $publisher->id )->where('status',5)->count() }}</td>
-                                                        <td><span>$</span>{{  \App\Models\Task::on('mysql_main_pr')->where('pr_user_id' , $publisher->id )->where('status',5)->whereNotIn('id' , \App\Models\PublisherTaskPayment::where('publisher_id' , $publisher->id)->pluck('id'))->sum('task_price') }}</td>
-                                                        <td>
-                                                            <a href="{{ route('publicher_completed_tasks' , ['publisher_id' => $publisher->id ]) }}" class="btn btn-primary"><i class="fas fa-eye mr-2"></i>Show Tasks & Balance</a>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
+                                                @foreach ($publishers as $publisher)
+                                                <tr>
+                                                    <td>#{{ $publisher->id }}</td>
+                                                    <td>{{ $publisher->name }}</td>
+                                                    <td>{{ $publisher->email }}</td>
+                                                    <td>{{ \App\Models\Task::on('mysql_main_pr')->where('pr_user_id' , $publisher->id )->where('status',5)->count() }}</td>
+                                                    <td>{{ \App\Models\PublisherTaskPayment::on('mysql_main_pr')->where('publisher_id' , $publisher->id )->where('status',1)->count() }}</td>
+                                                    <td><span>$</span>{{ ( \App\Models\Task::on('mysql_main_pr')->where('pr_user_id' , $publisher->id )->where('status',5)->whereNotIn('id' , \App\Models\PublisherTaskPayment::on('mysql_main_pr')->where('publisher_id' , $publisher->id)->pluck('task_id'))->sum('task_price'))  }}</td>
+                                                    <td>
+                                                        <a href="{{ route('publicher_completed_tasks' , ['publisher_id' => $publisher->id ]) }}" class="btn btn-primary"><i class="fas fa-eye mr-2"></i>Show Tasks & Balance</a>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

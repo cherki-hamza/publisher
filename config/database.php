@@ -45,7 +45,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            //'url' => env('DATABASE_URL'),
+            'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'publisher'),
@@ -69,9 +69,9 @@ return [
             'url' => env('DATABASE_URL_MAIN'), // 'phpstack-1244355-4462348.cloudwaysapps.com',
             'host' => env('DB_HOST_MAIN', '127.0.0.1'), // '68.183.79.139',
             'port' =>  env('DB_PORT_MAIN', '3306'), // '8082',
-            'database' =>  env('DB_DATABASE_MAIN', 'content'), // 'rdkwyztqah',
-            'username' =>  env('DB_USERNAME_MAIN', 'cherki'),  // 'rdkwyztqah',
-            'password' => env('DB_PASSWORD_MAIN', 'root'),  // '7Q4jxsGaR3',
+            'database' =>  env('DB_DATABASE_MAIN', 'rdkwyztqah'), // 'rdkwyztqah , content',
+            'username' =>  env('DB_USERNAME_MAIN', 'rdkwyztqah'),  // 'rdkwyztqah , cherki',
+            'password' => env('DB_PASSWORD_MAIN', '7Q4jxsGaR3'),  // '7Q4jxsGaR3 , root',
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
