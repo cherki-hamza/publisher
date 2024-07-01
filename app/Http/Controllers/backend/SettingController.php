@@ -32,7 +32,8 @@ class SettingController extends Controller
     // method for publisher balnce
     public function publisher_balance(Request $request){
 
-        if(empty(PublisherVerify::where('user_id',auth()->user()->id)->first()) || PublisherVerify::where('user_id',auth()->user()->id)->first()->is_verified === 0 || auth()->user()->role != 'super-admin'){
+
+        if(empty(PublisherVerify::where('user_id',auth()->user()->id)->first()) && PublisherVerify::where('user_id',auth()->user()->id)->first()->is_verified === 0 && auth()->user()->role !== 'super-admin' && auth()->user()->role == 'publisher'){
             PublisherVerify::updateOrCreate(
                 ['user_id' => auth()->user()->id],
                 [
@@ -40,21 +41,44 @@ class SettingController extends Controller
                 ]
             );
            return redirect()->route('verify_email')->with('warning','Please Enter Your Paypal Email');
+
+        }elseif(auth()->user()->role == 'super-admin'){
+             //  $publisher = User:: on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id);
+            $publisher = User::where('id', request()->publisher_id)->first();
+
+            $tasks_count = Task::on('mysql_main_pr')->where('status',5)->sum('task_price');
+            $paypal_vat = ($tasks_count*10/100);
+            //$publisher_balance = ($tasks_count - $paypal_vat);
+
+            $publisher_balance = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->sum('publisher_payment');
+
+            $payements_ids = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->pluck('id');
+
+            $publisher_balance_waiting = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->whereNotIn('id' , $payements_ids)->where('status',5)->sum('task_price');
+
+            return view('admin.balance.super_admin_publisher_blance' , compact('tasks_count','paypal_vat','publisher_balance','publisher_balance_waiting'));
+
+        }else{
+
+               //  $publisher = User:: on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id);
+                $publisher = User::where('id', request()->publisher_id)->first();
+
+                $tasks_count = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->where('status',5)->sum('task_price');
+                $paypal_vat = ($tasks_count*10/100);
+                //$publisher_balance = ($tasks_count - $paypal_vat);
+
+                $publisher_balance = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->sum('publisher_payment');
+
+                $payements_ids = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->pluck('id');
+
+                $publisher_balance_waiting = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->whereNotIn('id' , $payements_ids)->where('status',5)->sum('task_price');
+
+              /* return $publisher_balance_waiting; */
+              return view('admin.balance.publisher_blance' , compact('tasks_count','paypal_vat','publisher_balance','publisher_balance_waiting'));
         }
-       //  $publisher = User:: on('mysql_main_pr')->where('pr_user_id' , request()->publisher_id);
-       $publisher = User::where('id', request()->publisher_id)->first();
 
-       $tasks_count = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->where('status',5)->sum('task_price');
-       $paypal_vat = ($tasks_count*10/100);
-       //$publisher_balance = ($tasks_count - $paypal_vat);
 
-       $publisher_balance = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->sum('publisher_payment');
 
-       $payements_ids = PublisherTaskPayment::where('publisher_id' , auth()->user()->id)->pluck('id');
-
-       $publisher_balance_waiting = Task::on('mysql_main_pr')->where('pr_user_id' , auth()->user()->id)->whereNotIn('id' , $payements_ids)->where('status',5)->sum('task_price');
-       /* return $publisher_balance_waiting; */
-        return view('admin.balance.publisher_blance' , compact('tasks_count','paypal_vat','publisher_balance','publisher_balance_waiting'));
     }
 
     // method for publisher verify paypal email
