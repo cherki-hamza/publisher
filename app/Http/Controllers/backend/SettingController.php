@@ -33,7 +33,14 @@ class SettingController extends Controller
     public function publisher_balance(Request $request){
 
 
-        if(empty(PublisherVerify::where('user_id',auth()->user()->id)->first()) ){
+        if(empty(PublisherVerify::where('user_id',auth()->user()->id)->first()) && auth()->user()->role !== 'super-admin' ){
+
+            PublisherVerify::updateOrCreate(
+                ['user_id' => auth()->user()->id],
+                [
+                    'user_id' => auth()->user()->id,
+                ]
+            );
 
             if(PublisherVerify::where('user_id',auth()->user()->id)->first()->is_verified == 0 && auth()->user()->role !== 'super-admin' && auth()->user()->role == 'publisher'){
                 PublisherVerify::updateOrCreate(
