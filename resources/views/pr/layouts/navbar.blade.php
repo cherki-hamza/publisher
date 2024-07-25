@@ -9,16 +9,272 @@
         </li>
     </ul>
 
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item">
-            <a class="nav-link" id="btntheme" role="button">
-                <i id="icontheme" class="fas fa-sun"></i>
-            </a>
-        </li>
+        <style>
+            a{
+              text-decoration: none;
+              color: black;
+            }
 
-        <li class="nav-item">
+            a:visited{
+              color: black;
+            }
+
+            .box::-webkit-scrollbar-track
+            {
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                background-color: #F5F5F5;
+                border-radius: 5px
+            }
+
+            .box::-webkit-scrollbar
+            {
+                width: 10px;
+                background-color: #F5F5F5;
+                border-radius: 5px
+            }
+
+            .box::-webkit-scrollbar-thumb
+            {
+                background-color: black;
+                border: 2px solid black;
+                border-radius: 5px
+            }
+
+
+            .icons{
+              display: inline;
+              float: right
+            }
+
+            .notification-container {
+                        position: relative;
+                        display: inline-block;
+                    }
+
+            .notification{
+              padding-top: 10px;
+              position: relative;
+              display: inline-block;
+            }
+
+            .number{
+              height: 28px;
+              width:  26px;
+              background-color: #d63031;
+              border-radius: 20px;
+              color: white;
+              text-align: center;
+              position: absolute;
+              top: 0px;
+              left: 66px;
+              padding: 0px;
+              border-style: solid;
+              border-width: 2px;
+            }
+
+            .number:empty {
+               display: none;
+            }
+
+            .notBtn{
+              transition: 0.5s;
+              cursor: pointer
+            }
+
+            .fas{
+              /* font-size: 25pt;padding-bottom: 10px;margin-right: 40px;margin-left: 40px; */
+            }
+
+            .box{
+              width: 400px;
+              height: 0px;
+              border-radius: 10px;
+              transition: 0.5s;
+              position: absolute;
+              overflow-y: scroll;
+              padding: 0px;
+              left: -305px;
+              margin-top: 5px;
+              background-color: #F4F4F4;
+              -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.2);
+              -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+              box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+              cursor: context-menu;
+            }
+
+            .fas:hover {
+              color: #d63031;
+            }
+
+            .notBtn:hover > .box{
+              height: auto
+            }
+
+            .content{
+              padding: 20px;
+              color: black;
+              vertical-align: middle;
+              text-align: left;
+            }
+
+            .gry{
+              background-color: #F4F4F4;
+            }
+
+            .top{
+              color: black;
+              padding: 10px
+            }
+
+            .display{
+              position: relative;
+              height: 240px; /* 240px */
+              display: block;
+            }
+
+            .cont{
+              position: absolute;
+              top: 0;
+              width: 100%;
+              height: auto;
+              background-color: #F4F4F4;
+            }
+
+            .cont:empty{
+              display: none;
+            }
+
+            .stick{
+              text-align: center;
+              display: block;
+              font-size: 50pt;
+              padding-top: 70px;
+              padding-left: 80px
+            }
+
+            .stick:hover{
+              color: black;
+            }
+
+            .cent{
+              text-align: center;
+              display: block;
+            }
+
+            .sec{
+              padding: 25px 10px;
+              background-color: #F4F4F4;
+              transition: 0.5s;
+            }
+
+            .profCont{
+              padding-left: 15px;
+            }
+
+            .profile{
+              -webkit-clip-path: circle(50% at 50% 50%);
+              clip-path: circle(50% at 50% 50%);
+              width: 75px;
+              float: left;
+            }
+
+            .txt{
+              vertical-align: top;
+              font-size: 1.25rem;
+              padding: 5px 10px 0px 69px;
+            }
+
+            .sub{
+              font-size: 1rem;
+              color: grey;
+            }
+
+            .new{
+              border-style: none none solid none;
+              border-color: red;
+            }
+
+            .sec:hover{
+              background-color: #BFBFBF;
+            }
+
+            .dropdown-menu-lg {
+               min-width: 390px !important;
+            }
+
+
+             </style>
+        {{-- start second notification --}}
+        <div class="task_notifications">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
+                <i style="font-size: 28px;" class="far fa-bell"></i>
+                <span style="top:0px;right: 2px;font-size: 15px;" class="badge badge-warning navbar-badge count_notification_number_1">{{ $notifications_count  }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;width: 400px;">
+                <span style="background-color: #4B49AC;" class="dropdown-item dropdown-header text-white"><span class="count_notification_number_2">{{ $notifications_count }}</span> Notifications</span>
+
+                <div class="dropdown-divider"></div>
+
+                <div id="not" style="margin-top: 5px;margin-bottom: 5px;overflow-y: auto;{{ $notifications_count <= 0   ? '' : 'height: auto' }};max-height: 600px" class="row d-flex justify-content-center notification_container">
+                @if(!empty($notifications) && count($notifications) >= 1)
+                @foreach ($notifications as $notification)
+
+                <a style="padding-top: 20px;padding-bottom: 20px;border-bottom: #4B49AC solid 1px;margin-bottom: 2px;border-top: {{ ($loop->first)? 'solid 1px;margin-bottom':'' }}" href = "{{ route('all_disabled_publishers') }}"> {{-- /* margin-left: 24px; */ --}}
+
+               {{--  @if( $notification->site_id == null)
+                <div class="dropdown-divider"></div>
+                  <a style="margin-left: 24px;padding-top: 20px;padding-bottom: 20px;" href = "">
+                 @endif --}}
+
+
+
+                <img style="width: 25px;height: 25px;border-radius: 100%" class = "ml-2" src = "{{ $notification->user->GetPicture() }}">
+
+                <span class="text-muted" style="font-size: 14px">Publisher: <span class="text-danger"> {{ $notification->user->name }}</span> Request Approval for website : <br> <span style="margin-left: 20px" class="text-success">https://{{ $notification->site->site_url }}</span></span>
+
+                <span style="font-size: 10px !important;" class="text-primary"> Check <span style="position: relative;float: inline-end;margin-top: 6px;">{{ $notification->created_at->diffForhumans() }}</span> </span> {{--  padding: 38px;  --}}
+
+            </a>
+
+
+                <div class="dropdown-divider"></div>
+
+
+                @endforeach
+
+                @else
+                <div class="text-center my-2">
+                    <span id="alert_not" class="ml-3 text-danger text-center my-5" style="font-size: 10px">There is No Notification</span>
+                 </div>
+                   {{-- <div id="not" style="margin-top: 5px;margin-bottom: 5px;display: none" class="row activate_div notification_container"></div>
+                   <div class="text-center my-2">
+                    <span id="alert_not" class="ml-3 text-danger text-center my-5" style="font-size: 10px">There is No Notification</span>
+                 </div> --}}
+                 @endif
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <a href="#" class="{{-- dropdown-item  --}}dropdown-footer">
+                    <div class="row d-flex justify-content-between">
+                        <a href="" style="margin: -8px;margin-bottom: 11px;" class="mr-auto"><span class="ml-3"><i class="fa fa-tasks mr-2" aria-hidden="true"></i>Tasks</span></a>
+                        <a href="" style="margin: -8px;margin-right: 38px;margin-bottom: 11px;"><span class="ml-3"><i class="fa fa-credit-card mr-2" aria-hidden="true"></i>Payments</span></a>
+                    </div>
+                </a>
+                </div>
+
+            </li>
+         </div>
+      {{-- end second notification --}}
+
+
+            <li class="nav-item">
             <a class="nav-link" href="{{ route('index') }}" target="_bkank" role="button">
                 <i class="fas fa-globe"></i>
             </a>

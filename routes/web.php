@@ -53,9 +53,23 @@ use Illuminate\Support\Facades\Notification;
 
     Route::get('/dev', function () {
 
-    return DB::connection('mysql')->table('sites')->where(function($query){
-         $query->where('site_url','https://ott.ae');
-    })->first();
+     /*   $sites = Site::on('mysql_main_pr')->get();
+       $pdo =  DB::connection()->getName();
+
+       return response()->json([
+        'db' => $pdo,
+        'data' => $sites
+      ]); */
+
+
+
+
+
+    /* $site = DB::connection('mysql')->table('sites')->where(function($query){
+         $query->where('site_url','ott.ae');
+    })->first(); */
+
+    //return ($sites);
 
     })->name('dev');
 

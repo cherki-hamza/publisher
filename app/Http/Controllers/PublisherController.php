@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\Client\ClientInProgressEmail;
 use App\Mail\CompletedTaskEmail;
 use App\Mail\Publisher\PublisherInProgressEmail;
+use App\Models\Notification;
 use App\Models\Site;
 use App\Models\Task;
 use App\Models\User;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Pusher\Pusher;
 
 class PublisherController extends Controller
 {
@@ -111,6 +113,36 @@ class PublisherController extends Controller
           //DB::connection('mysql_main_pr')->table('sites')->insert($data);
 
           Site::on('mysql_main_pr')->create($data);
+
+
+          // save site ned approval notification
+          $not = Notification::create([
+            'user_id'    => auth()->user()->id,
+            'site_id'    => $site->id,
+          ]);
+
+            // send push notification to super-admin
+            $data = [
+              'message'    => 'success',
+              'user_img' => $not->user->GetPicture(),
+              'site_url'    => $site->site_url,
+              'username'  => auth()->user()->name,
+              'time'    => $not->created_at->diffForhumans()
+            ];
+
+            $options = array(
+                'cluster' => 'ap2',
+                'encrypted' => true
+            );
+            $pusher = new Pusher(
+                env('PUSHER_APP_KEY'),
+                env('PUSHER_APP_SECRET'),
+                env('PUSHER_APP_ID'),
+                $options
+            );
+
+
+            $pusher->trigger('site_approval', 'App\Events\SiteApprovalNotification', $data);
 
 
 

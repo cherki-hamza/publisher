@@ -29,9 +29,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">
 
-                                    <span style="float: left" class=" text-right">
-                                        <a href="{{-- {{ route('add_publishers') }} --}}" class="btn btn-primary">Add Publisher Sites</a>
-                                    </span>
+                                   {{--  <span style="float: left" class=" text-right">
+                                        <a href="{{ route('add_publishers') }}" class="btn btn-primary">Add Publisher Sites</a>
+                                    </span> --}}
 
                                 </h3>
 

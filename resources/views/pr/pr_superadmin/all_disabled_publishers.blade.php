@@ -54,7 +54,7 @@
                                 <div class="row">
                                    {{--  <h3>publishers..</h3>  datatable --}}
                                     <div class="table-responsive col-md-12">
-                                        <table class="table table-bordered table-hover">
+                                        <table id="datatable" class="table table-bordered datatable table-hover">
 
                                             @include('pr.layouts.inc.thead_recovery')
 

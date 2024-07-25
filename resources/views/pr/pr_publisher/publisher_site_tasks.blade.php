@@ -61,7 +61,7 @@
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <a href="{{ route('show_task' , ['user_id' => $task->pr_user_id , 'site_id' => $task->site_id , 'task_id' => $task->id]) }}" class="btn  btn-primary mx-2" ><i class="fa fa-eye mr-2"></i>
-                                                    Show The Task Request
+                                                    Show The Task
                                                 </a>
                                             </div>
                                         </td>

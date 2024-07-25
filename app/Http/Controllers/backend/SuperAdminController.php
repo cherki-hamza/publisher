@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class SuperAdminController extends Controller
                           ->OrWhere('site_category' , 'like', '%' . request('search') . '%')
                           ->OrWhere('site_url' , 'like', '%' . request('search') . '%')->paginate(12);
         }else{
-            $sites = Site::on('mysql_main_pr')->where('site_status', '2')->paginate(12);
+            $sites = Site::on('mysql_main_pr')->where('site_status', '2')->orderBy('id','DESC')->paginate(12);
         }
 
 
@@ -64,6 +65,16 @@ class SuperAdminController extends Controller
 
 
        $site = Site::on('mysql_main_pr')->where('id' ,  $request->site_id)->first();
+
+
+       // check if there is notification related about this site and if found notification
+       // if exist update the notification make it as it readed
+       $notification = Notification::where('site_id' , $site->pr_site_id)->first();
+       if($notification){
+        $notification->update([
+            'is_read' => 1
+        ]);
+       }
 
        if(!empty($site)){
         $site->update(['site_status' => '1']);
