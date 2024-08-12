@@ -6,45 +6,11 @@
 
 $(document).ready(function(){
 
+    var div = $('#not');
+    console.log(div.find('a:first'));
 
-    document.title = "🟢 New Message - ChatGPT";
-    console.log(document.title);
 
-    displayNotification('hello bro haw are you');
-
-    function displayNotification(message) {
-            if (Notification.permission === 'granted') {
-                navigator.serviceWorker.getRegistration().then(function(reg) {
-                    reg.showNotification('New Message from ChatGPT', {
-                        body: message,
-                        icon: 'icon.png', // The icon file
-                        badge: 'icon.png'
-                    });
-                });
-            } else if (Notification.permission !== 'denied') {
-                Notification.requestPermission().then(permission => {
-                    if (permission === 'granted') {
-                        displayNotification(message);
-                    }
-                });
-            }
-        }
-
-        // Register service worker if not already registered
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
-
-           var div = $('#not');
-            console.log(div.find('a:first'));
-
-    // Enable pusher logging - don't include this in production
+            // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
     // pusher creditial
     var pusher = new Pusher('74b3e16fd1d7c4a266a3', {
@@ -75,10 +41,11 @@ $(document).ready(function(){
 
 
             var no_notification = document.getElementById('alert_not');
-            if(no_notification){
+            no_notification.style.display = 'none';
+            /* if(no_notification){
                 // hide the no notification
                 no_notification.style.display = 'none';
-            }
+            } */
 
             notificationHTML = `
                <div class="dropdown-divider"></div>
@@ -96,11 +63,12 @@ $(document).ready(function(){
 
                 //console.log(div[0]);
                 // Insert the new link before the first link
-                if (div.find('a:first')) {
-                   div.find('a:first').before(notificationHTML);
+                if (div.find('a:first').length) {
+                    div.find('a:first').before(notificationHTML);
                 } else {
-                  $('#not').append(notificationHTML);
+                    div.append(notificationHTML);
                 }
+
         }
 
 

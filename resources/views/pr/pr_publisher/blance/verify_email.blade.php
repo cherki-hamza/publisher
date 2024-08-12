@@ -38,7 +38,7 @@
                                 @csrf
                                 @method('put')
                                 <div class="form-group">
-                                    <label for="">Verify Your Paypal Email</label>
+                                    <label for="">Verify Your Paypal Email <span class="text-danger"> (Enter Your Real Paypal Account)</span></label>
                                     <input type="text" class="form-control" name="email_verify" placeholder="Enter Your Paypal Email">
                                 </div>
 
