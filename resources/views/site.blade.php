@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png">
-    <link rel="manifest" href="/assets/img/favicons/manifest.json">
+    <link rel="manifest" href="public//assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="/favicon-32x32.png">
     <meta name="theme-color" content="#ffffff">
 
@@ -45,7 +45,7 @@
     <link href="https://icopify.co/assets/lib/plyr/plyr.css" rel="stylesheet">
 
     <link href="https://icopify.co/assets/css/theme.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('template/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/template/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <style>
         .navbar-inverse .navbar-toggle .icon-bar{
             color: white !important;
@@ -66,7 +66,7 @@
         <nav class="navbar navbar-standard navbar-expand-lg fixed-top {{-- navbar-dark --}} navbar-theme {{-- shadow-bottom --}} text-dark {{-- bg-dark --}}">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('index') }}">
-                      <img style="width: 130px;height: 120px;"  src="{{ asset('assets/images/logo.png') }}" alt="Pr ott">
+                      <img style="width: 130px;height: 120px;"  src="{{ asset('public/assets/images/logo.png') }}" alt="Pr ott">
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false"
@@ -515,8 +515,8 @@
     <script src="https://icopify.co/assets/js/theme.js"></script>
     <script src="https://icopify.co/assets/lib/lightbox2/js/lightbox.min.js"></script>
     <script src="https://icopify.co/assets/lib/plyr/plyr.polyfilled.min.js"></script>
-    <script src="{{ asset('template/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('template/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('public/template/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/template/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 
 
 
