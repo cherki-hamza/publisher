@@ -52,7 +52,7 @@
         <!-- /.content-header -->
 
         <div class="loader">
-            <img src="{{ asset('assets/images/loading.gif') }}" alt="Loading...">
+            <img src="{{ asset('public/assets/images/loading.gif') }}" alt="Loading...">
          </div>
 
         <!-- Main content -->
